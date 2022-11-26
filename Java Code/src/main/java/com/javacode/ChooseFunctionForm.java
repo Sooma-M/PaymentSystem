@@ -21,7 +21,7 @@ public class ChooseFunctionForm implements FormUI{
 
         //get values from the user
         Scanner in = new Scanner(System.in);
-        System.out.print("Select Your Function: ");
+        System.out.println("Select Your Function: ");
         System.out.println("1. Search");
         System.out.println("2. Payment Services");
         System.out.println("3. Get Refund");

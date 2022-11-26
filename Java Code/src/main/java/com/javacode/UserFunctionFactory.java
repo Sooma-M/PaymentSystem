@@ -3,15 +3,15 @@ package com.javacode;
 public class UserFunctionFactory implements FormFactory{
     @Override
     public FormUI createForm(String type) {
-        if (type == "search")
+        if (type.equals("search"))
             return null;
-        else if (type == "pay")
+        else if (type.equals("pay"))
             return null;
-        else if (type == "refund")
+        else if (type.equals("refund"))
             return null;
-        else if (type == "discount")
+        else if (type.equals("discount"))
             return null;
-        else if (type == "wallet")
+        else if (type.equals("wallet"))
             return null;
         return null;
     }

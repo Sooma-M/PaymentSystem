@@ -5,7 +5,7 @@ public class Main{
     public static void main(String[] args) {
         Authentication sign = new SignIn();
         Command c = new SignCommand(sign);
-        FormUI form = new SignInForm();
+        FormUI form = new SignFactory().createForm("sign-in");
         form.setCommand(c);
         form.getInfoFromUser();
     }
