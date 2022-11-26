@@ -11,7 +11,7 @@ public class ChooseFunctionForm implements FormUI{
     @Override
     public void setCommand(Command c) {
         command = c;
-        functions = new String[]{"search", "refund", "discount", "wallet"};
+        functions = new String[]{"search","pay" ,"refund", "discount", "wallet"};
     }
 
     @Override
@@ -23,9 +23,10 @@ public class ChooseFunctionForm implements FormUI{
         Scanner in = new Scanner(System.in);
         System.out.print("Select Your Function: ");
         System.out.println("1. Search");
-        System.out.println("2. Get Refund");
-        System.out.println("3. Check Discount");
-        System.out.println("4. Add Funds to the Wallet");
+        System.out.println("2. Payment Services");
+        System.out.println("3. Get Refund");
+        System.out.println("4. Check Discount");
+        System.out.println("5. Add Funds to the Wallet");
         Integer choose = in.nextInt();
 
         //set values to map
