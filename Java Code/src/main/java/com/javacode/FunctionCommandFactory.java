@@ -1,10 +1,10 @@
 package com.javacode;
 
-public class UserFunctionFactory implements FormFactory{
+public class FunctionCommandFactory implements CommandFactory{
     @Override
-    public FormUI createForm(String type) {
+    public Command createCommand(String type) {
         if (type.equals("search"))
-            return new SearchForm();
+            return new SearchCommand(new SearchDatabase());
         else if (type.equals("pay"))
             return null;
         else if (type.equals("refund"))

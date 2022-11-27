@@ -11,6 +11,8 @@ public class ChooseFunctionCommand implements Command{
     @Override
     public void execute(Map m) {
         FormUI form = ff.createForm((String) m.get("choose"));
-        //form.getInfoFromUser();
+        Command c = new FunctionCommandFactory().createCommand((String) m.get("choose"));
+        form.setCommand(c);
+        form.getInfoFromUser();
     }
 }
