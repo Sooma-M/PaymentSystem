@@ -25,7 +25,7 @@ public class PrintSearchResult implements Printer{
 
             Map service = new HashMap<>();
             service.put("name", result.get(srv-1));
-            Command c = new SelectResultCommand();
+            Command c = new SelectServiceCommand();
             c.execute(service);
         }
     }

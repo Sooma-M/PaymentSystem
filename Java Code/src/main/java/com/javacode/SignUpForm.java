@@ -17,7 +17,7 @@ public class SignUpForm implements FormUI{
 
         //get values from the user
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter your username: ");
+        System.out.print("Enter your username: ");
         String username = in.nextLine();
         System.out.print("Enter your email: ");
         String email = in.nextLine();
@@ -25,7 +25,7 @@ public class SignUpForm implements FormUI{
         String pw = in.nextLine();
 
         //set values to map
-        m.put("username", email);
+        m.put("username", username);
         m.put("email", email);
         m.put("password", pw);
 
