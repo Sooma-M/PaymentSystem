@@ -9,6 +9,14 @@ public class DropDownField extends Field{
         this.label = label;
         this.value = value;
     }
+    public void DropDownField_setval(String label , List value){
+        this.label = label;
+        this.value = value;
+    }
+
+
+    public DropDownField() {}
+
     public String getValue(){
         return label;
     }
