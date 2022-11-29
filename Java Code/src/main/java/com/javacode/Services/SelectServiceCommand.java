@@ -11,5 +11,6 @@ public class SelectServiceCommand implements Command {
         Service s = new ServiceFactory().createService((String) m.get("name"));
         FormUI form = new ServiceForm(s);
         form.setCommand(new ServiceCommand());
+        form.getInfoFromUser();
     }
 }

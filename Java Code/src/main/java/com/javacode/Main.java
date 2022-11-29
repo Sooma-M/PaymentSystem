@@ -1,4 +1,5 @@
 package com.javacode;
+import com.javacode.Model.CurrentUser;
 import com.javacode.Sign.*;
 import com.javacode.UserFunctionallity.UserFunctionCommandFactory;
 import com.javacode.UserFunctionallity.UserFunctionFactory;
@@ -50,7 +51,7 @@ public class Main{
                     services.add("wallet");
                     while (true)
                     {
-                        System.out.println("Select Your Function: ");
+                        System.out.println("Welcome "+ CurrentUser.getUser().getUsername() +", please select the function that you want to use: ");
                         System.out.println("1. Search for Services");
                         System.out.println("2. Get Refund");
                         System.out.println("3. Check Discount");
