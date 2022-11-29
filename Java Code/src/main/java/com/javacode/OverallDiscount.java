@@ -12,4 +12,5 @@ public class OverallDiscount implements discount {
             entry.setValue(price);
         }
     }
+
 }

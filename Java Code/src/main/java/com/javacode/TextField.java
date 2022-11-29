@@ -5,6 +5,11 @@ public class TextField extends Field{
     public TextField(String label){
         this.value = label;
     }
+
+    public TextField() {
+
+    }
+
     public void setValue(String value){
         this.value = value;
     }

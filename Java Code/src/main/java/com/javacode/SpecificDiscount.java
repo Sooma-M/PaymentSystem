@@ -23,7 +23,6 @@ public class SpecificDiscount implements discount{
                 long price =entry.getValue();
                 //  entry.setValue()
             }
-
         }
     }
 }
