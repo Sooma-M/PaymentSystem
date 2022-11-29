@@ -19,6 +19,8 @@ public class AddNewProvider {
     }
       public void add_provider(){
           Scanner in = new Scanner(System.in);
+          System.out.println("Enter provider name :");
+          String providerName=in.nextLine();
           System.out.print("Enter number of DropDownfield you want : ");
           String number1= in.nextLine();
           System.out.print("Enter number of Text field you want : ");
@@ -48,7 +50,7 @@ public class AddNewProvider {
 
           }
           providerObject p=new providerObject();
-          p.set(dropDownFields,textFields);
+          p.set(providerName,dropDownFields,textFields);
           object.AddToDatabase(p);
 
         }

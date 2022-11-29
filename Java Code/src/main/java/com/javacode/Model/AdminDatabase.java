@@ -11,4 +11,7 @@ public class AdminDatabase {
     public void AddToDatabase(providerObject object){
         providerObjects.add(object);
     }
+    public ArrayList<providerObject> getProviders(){
+        return providerObjects;
+    }
 }
