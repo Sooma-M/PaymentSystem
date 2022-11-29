@@ -29,7 +29,7 @@ public class Main{
                 choose = in.nextInt();
             }
             if (choose == 3) {
-                System.out.println("Thank you to use our system.");
+                System.out.println("Thank you for using our system.");
                 break;
             }
             try {

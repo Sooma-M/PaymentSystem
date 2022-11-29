@@ -19,6 +19,6 @@ public class SignUp implements Authentication{
             if(user.getEmail().equals(m.get("email")))
                 throw new IllegalArgumentException("Email exist! try again");
         }
-        UserAccounts.addUser(new User((String) m.get("username"), (String) m.get("email"), (String) m.get("password")));
+        UserAccounts.addUser(new User((String) m.get("username"), (String) m.get("email"), (String) m.get("password"), null));
     }
 }
