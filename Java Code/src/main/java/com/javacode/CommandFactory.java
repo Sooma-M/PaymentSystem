@@ -1,5 +1,5 @@
 package com.javacode;
 
 public interface CommandFactory {
-    Command createCommand(String type);
+    Command createCommand(String type, Object o);
 }

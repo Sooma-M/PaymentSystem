@@ -1,5 +1,11 @@
 package com.javacode;
+import com.javacode.Sign.*;
+import com.javacode.UserFunctionallity.UserFunctionCommandFactory;
+import com.javacode.UserFunctionallity.UserFunctionFactory;
+import com.javacode.UserFunctionallity.UserFunctionFormFactory;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main{
@@ -7,6 +13,9 @@ public class Main{
     public static void main(String[] args) {
         while (true)
         {
+            List<String> signs = new ArrayList<>();
+            signs.add("sign-in");
+            signs.add("sign-up");
             System.out.println("Choose what you want: ");
             System.out.println("1. Sign-In");
             System.out.println("2. Sign-Up");
@@ -15,26 +24,46 @@ public class Main{
             int choose = in.nextInt();
             while (choose != 1 && choose != 2)
             {
-                System.out.println("try again! choose: ");
+                System.out.print("try again! choose: ");
                 choose = in.nextInt();
             }
-            if (choose == 1)
-            {
-                Authentication sign = new SignIn();
+            try {
+                Authentication sign = new SignFactory().createForm(signs.get(choose-1));
                 Command c = new SignCommand(sign);
-                FormUI form = new SignFactory().createForm("sign-in");
+                FormUI form = new SignFormFactory().createForm(signs.get(choose-1));
                 form.setCommand(c);
                 form.getInfoFromUser();
-            }
-            else if (choose == 2)
+                System.out.println("Success");
+                if (choose == 1)
+                {
+                    //get values from the user
+                    List<String> services = new ArrayList<>();
+                    services.add("search");
+                    services.add("refund");
+                    services.add("discount");
+                    services.add("wallet");
+                    System.out.println("Select Your Function: ");
+                    System.out.println("1. Search for Services");
+                    System.out.println("2. Get Refund");
+                    System.out.println("3. Check Discount");
+                    System.out.println("4. Add Funds to the Wallet");
+                    choose = in.nextInt();
+                    while (choose < 1 || choose > 4)
+                    {
+                        System.out.print("try again! choose: ");
+                        choose = in.nextInt();
+                    }
+                    Object serve = new UserFunctionFactory().createFunction(services.get(choose-1));
+                    c = new UserFunctionCommandFactory().createCommand(services.get(choose-1), serve);
+                    form = new UserFunctionFormFactory().createForm(services.get(choose-1));
+                    form.setCommand(c);
+                    form.getInfoFromUser();
+
+                }
+            }catch (IllegalArgumentException ex)
             {
-                Authentication sign = new SignUp();
-                Command c = new SignCommand(sign);
-                FormUI form = new SignFactory().createForm("sign-up");
-                form.setCommand(c);
-                form.getInfoFromUser();
+                //System.out.println("");
             }
-            System.out.println("Thank You");
         }
     }
 }
