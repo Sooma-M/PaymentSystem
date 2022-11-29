@@ -1,14 +1,17 @@
 package com.javacode.Services;
 
+import com.javacode.Admin.providerObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class LandlineService implements Service {
-    private static List providers;
+    private static ArrayList<providerObject> providers;
     private static List discounts;
 
     @Override
-    public void addProvider() {
-
+    public void addProvider(providerObject object) {
+       providers.add(object);
     }
 
     @Override
