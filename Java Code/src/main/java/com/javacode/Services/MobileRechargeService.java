@@ -1,16 +1,18 @@
 package com.javacode.Services;
 
+import com.javacode.Admin.providerObject;
 import com.javacode.Services.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MobileRechargeService implements Service {
-    private static List providers;
+    private static ArrayList<providerObject> providers;
     private static List discounts;
 
     @Override
-    public void addProvider() {
-
+    public void addProvider(providerObject object) {
+          providers.add(object);
     }
 
     @Override
