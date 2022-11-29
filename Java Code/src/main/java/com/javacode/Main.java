@@ -19,13 +19,18 @@ public class Main{
             System.out.println("Choose what you want: ");
             System.out.println("1. Sign-In");
             System.out.println("2. Sign-Up");
+            System.out.println("3. Exit");
             System.out.print("choose: ");
             Scanner in = new Scanner(System.in);
             int choose = in.nextInt();
-            while (choose != 1 && choose != 2)
+            while (choose < 1 || choose > 3)
             {
                 System.out.print("try again! choose: ");
                 choose = in.nextInt();
+            }
+            if (choose == 3) {
+                System.out.println("Thank you to use our system.");
+                break;
             }
             try {
                 Authentication sign = new SignFactory().createForm(signs.get(choose-1));
@@ -42,23 +47,29 @@ public class Main{
                     services.add("refund");
                     services.add("discount");
                     services.add("wallet");
-                    System.out.println("Select Your Function: ");
-                    System.out.println("1. Search for Services");
-                    System.out.println("2. Get Refund");
-                    System.out.println("3. Check Discount");
-                    System.out.println("4. Add Funds to the Wallet");
-                    choose = in.nextInt();
-                    while (choose < 1 || choose > 4)
+                    while (true)
                     {
-                        System.out.print("try again! choose: ");
+                        System.out.println("Select Your Function: ");
+                        System.out.println("1. Search for Services");
+                        System.out.println("2. Get Refund");
+                        System.out.println("3. Check Discount");
+                        System.out.println("4. Add Funds to the Wallet");
+                        System.out.println("5. Log-out");
                         choose = in.nextInt();
+                        while (choose < 1 || choose > 5)
+                        {
+                            System.out.print("try again! choose: ");
+                            choose = in.nextInt();
+                        }
+                        System.out.println();
+                        if (choose == 5)
+                            break;
+                        Object serve = new UserFunctionFactory().createFunction(services.get(choose-1));
+                        c = new UserFunctionCommandFactory().createCommand(services.get(choose-1), serve);
+                        form = new UserFunctionFormFactory().createForm(services.get(choose-1));
+                        form.setCommand(c);
+                        form.getInfoFromUser();
                     }
-                    Object serve = new UserFunctionFactory().createFunction(services.get(choose-1));
-                    c = new UserFunctionCommandFactory().createCommand(services.get(choose-1), serve);
-                    form = new UserFunctionFormFactory().createForm(services.get(choose-1));
-                    form.setCommand(c);
-                    form.getInfoFromUser();
-
                 }
             }catch (IllegalArgumentException ex)
             {
