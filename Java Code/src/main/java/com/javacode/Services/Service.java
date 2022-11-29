@@ -1,5 +1,13 @@
 package com.javacode.Services;
 
-public abstract class Service {
-    String name;
+import java.util.List;
+
+public interface Service {
+    void addProvider();
+    void removeProvider();
+    List getProviders();
+
+    void addDiscount();
+    void removeDiscount();
+    List getDiscount();
 }

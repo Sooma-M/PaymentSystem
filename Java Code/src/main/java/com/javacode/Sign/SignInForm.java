@@ -32,7 +32,7 @@ public class SignInForm implements FormUI {
             command.execute(m);
         }catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            throw ex;
+            throw new IllegalArgumentException("");
         }
     }
 }

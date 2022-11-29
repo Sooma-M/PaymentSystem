@@ -2,9 +2,8 @@ package com.javacode.UserFunctionallity;
 
 import com.javacode.Command;
 import com.javacode.CommandFactory;
-import com.javacode.ISearch;
+import com.javacode.UserFunctionallity.Search.ISearch;
 import com.javacode.UserFunctionallity.Search.SearchCommand;
-import com.javacode.UserFunctionallity.Search.SearchDatabase;
 
 public class UserFunctionCommandFactory implements CommandFactory {
     @Override

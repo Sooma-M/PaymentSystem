@@ -39,6 +39,7 @@ public class Main{
                 form.setCommand(c);
                 form.getInfoFromUser();
                 System.out.println("Success");
+                System.out.println();
                 if (choose == 1)
                 {
                     //get values from the user
@@ -55,6 +56,7 @@ public class Main{
                         System.out.println("3. Check Discount");
                         System.out.println("4. Add Funds to the Wallet");
                         System.out.println("5. Log-out");
+                        System.out.print("choose: ");
                         choose = in.nextInt();
                         while (choose < 1 || choose > 5)
                         {
