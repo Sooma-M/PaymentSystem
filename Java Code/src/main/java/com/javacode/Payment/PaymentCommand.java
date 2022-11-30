@@ -10,6 +10,8 @@ public class PaymentCommand implements Command {
         payment = new PaymentFactory().createPayment("Credit Card");
     }
     public void execute(Map m){
-
+        if(!m.get("way").equals("no change"))
+            payment = new PaymentFactory().createPayment((String) m.get("way"));
+        payment.pay((Double) m.get("amount"));
     }
 }

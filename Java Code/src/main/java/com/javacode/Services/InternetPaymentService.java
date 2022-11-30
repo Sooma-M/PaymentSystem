@@ -21,6 +21,8 @@ public class InternetPaymentService extends Service {
         textFields.add(new TextField("zip code"));
         addProvider(new ServiceProvider("Orange",dropDownFields,textFields));
         addProvider(new ServiceProvider("We",dropDownFields,textFields));
+        setCacheAccept(true);
+        setName("Internet Payment Services");
     }
     //Get the only object available
     public static InternetPaymentService getInstance(){

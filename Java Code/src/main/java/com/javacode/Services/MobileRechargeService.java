@@ -22,6 +22,8 @@ public class MobileRechargeService extends Service {
         textFields.add(new TextField("zip code"));
         addProvider(new ServiceProvider("Orange",dropDownFields,textFields));
         addProvider(new ServiceProvider("We",dropDownFields,textFields));
+        setCacheAccept(false);
+        setName("Mobile Recharge Services");
     }
     //Get the only object available
     public static MobileRechargeService getInstance(){
