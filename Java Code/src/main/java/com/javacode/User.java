@@ -1,20 +1,20 @@
 package com.javacode;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.javacode.Model.Transactions;
-import com.javacode.Payment.Wallet;
 
 public class User implements Serializable {
     private String username, email, password;
-    private Transactions transactions;
+    private List<Transactions> transactions;
     Wallet wallet;
+    //Wallet wallet;
     public User(String username, String email, String password)
     {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.transactions = new Transactions();
         wallet = new Wallet();
     }
     public String getUsername() {return username;}
@@ -24,10 +24,11 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
-    public Transactions getTransactions(){
+    public Wallet getWallet() {
+    	return wallet;
+    }
+    public List<Transactions> getTransactions(){
     	return transactions;
     }
-    public Wallet getWallet() {return wallet;}
-
     public String toString() {return "User{" + "username='" + username + '\'' + ", email='" + email + '\'' + ", password='" + password + '\'' + '}';}
 }
