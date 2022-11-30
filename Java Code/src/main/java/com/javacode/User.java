@@ -19,6 +19,8 @@ public class User implements Serializable {
         wallet = new Wallet();
         transactions = new ArrayList<>();
     }
+    public void addTransaction (Transactions t){transactions.add(t);}
+
     public String getUsername() {return username;}
     public String getEmail() {
         return email;

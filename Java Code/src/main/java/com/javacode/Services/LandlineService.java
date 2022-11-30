@@ -18,6 +18,8 @@ public class LandlineService extends Service {
 
         addProvider(new ServiceProvider("Monthly receipt",dropDownFields,textFields));
         addProvider(new ServiceProvider("Quarter receipt ",dropDownFields,textFields));
+        setCacheAccept(false);
+        setName("Landline Services");
     }
     //Get the only object available
     public static LandlineService getInstance(){
