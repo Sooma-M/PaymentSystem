@@ -1,6 +1,5 @@
 package com.javacode.Payment;
 
-import com.javacode.Services.Service;
 import com.javacode.discount;
 
 import java.util.Map;
@@ -11,7 +10,7 @@ public class CreditCard implements Payment {
         double amount = (double)m.get("amount");
         if (m.containsKey("service"))
         {
-            amount = (discount)m.get("service").addDiscount(amount);
+            //amount = (discount)m.get("service").addDiscount(amount);
         }
         return amount;
     }

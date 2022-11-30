@@ -1,9 +1,7 @@
 package com.javacode;
 import com.javacode.Model.CurrentUser;
 import com.javacode.Sign.*;
-import com.javacode.UserFunctionallity.UserFunctionCommandFactory;
 import com.javacode.UserFunctionallity.UserFunctionFactory;
-import com.javacode.UserFunctionallity.UserFunctionFormFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,9 +65,10 @@ public class Main{
                         System.out.println();
                         if (choose == 5)
                             break;
-                        Object serve = new UserFunctionFactory().createFunction(services.get(choose-1));
-                        c = new UserFunctionCommandFactory().createCommand(services.get(choose-1), serve);
-                        form = new UserFunctionFormFactory().createForm(services.get(choose-1));
+                        FunctionFactory factory = new UserFunctionFactory();
+                        Object serve = factory.createFunction(services.get(choose-1));
+                        c = factory.createCommand(services.get(choose-1), serve);
+                        form = factory.createForm(services.get(choose-1));
                         form.setCommand(c);
                         form.getInfoFromUser();
                     }
