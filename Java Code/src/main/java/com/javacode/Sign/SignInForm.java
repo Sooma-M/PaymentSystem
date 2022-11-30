@@ -1,5 +1,7 @@
 package com.javacode.Sign;
-import com.javacode.*;
+
+import com.javacode.Command;
+import com.javacode.FormUI;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -3,11 +3,6 @@ package com.javacode.Services;
 import com.javacode.Command;
 import com.javacode.FormUI;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-
 public class ServiceForm implements FormUI {
     Service service;
     Command command;

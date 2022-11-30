@@ -1,13 +1,16 @@
 package com.javacode;
+
 import com.javacode.Model.CurrentUser;
-import com.javacode.Sign.*;
+import com.javacode.Sign.Authentication;
+import com.javacode.Sign.SignCommand;
+import com.javacode.Sign.SignFactory;
 import com.javacode.UserFunctionallity.UserFunctionFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main{
+public class Main {
 
     public static void main(String[] args) {
         while (true)

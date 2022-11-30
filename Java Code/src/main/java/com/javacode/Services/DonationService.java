@@ -1,40 +1,10 @@
 package com.javacode.Services;
 
-import com.javacode.Admin.providerObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class DonationService implements Service {
-    private static ArrayList<providerObject> providers;
-    private static List discounts;
-    @Override
-    public void addProvider(providerObject object) {
-       providers.add(object);
-    }
-
-    @Override
-    public void removeProvider() {
-
-    }
-
-    @Override
-    public List getProviders() {
-        return null;
-    }
-
-    @Override
-    public void addDiscount() {
-
-    }
-
-    @Override
-    public void removeDiscount() {
-
-    }
-
-    @Override
-    public List getDiscount() {
-        return null;
+public class DonationService extends Service {
+    private static DonationService instance = new DonationService();
+    private DonationService(){}
+    //Get the only object available
+    public static DonationService getInstance(){
+        return instance;
     }
 }

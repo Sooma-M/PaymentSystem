@@ -4,13 +4,13 @@ public class ServiceFactory{
         public Service createService(String type)
         {
             if (type.equals("Mobile Recharge Services"))
-                return new MobileRechargeService();
+                return MobileRechargeService.getInstance();
             else if(type.equals("Internet Payment Services"))
-                return new InternetPaymentService();
+                return InternetPaymentService.getInstance();
             else if(type.equals("Landline Services"))
-                return new LandlineService();
+                return LandlineService.getInstance();
             else if (type.equals("Donation Services"))
-                return new DonationService();
+                return DonationService.getInstance();
             return null;
         }
 }

@@ -14,6 +14,7 @@ public class SimpleSearch implements ISearch {
         name.add("Landline Services");
         name.add("Donation Services");
     }
+    public void addNewService(String n) {name.add(n);}
     @Override
     public List search(Map m) {
         String text = (String) m.get("search");
