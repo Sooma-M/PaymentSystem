@@ -3,18 +3,19 @@ package com.javacode;
 import java.io.Serializable;
 
 import com.javacode.Model.Transactions;
+import com.javacode.Payment.Wallet;
 
 public class User implements Serializable {
     private String username, email, password;
     private Transactions transactions;
-    //Wallet wallet;
+    Wallet wallet;
     public User(String username, String email, String password ,Transactions transactions)
     {
         this.username = username;
         this.email = email;
         this.password = password;
         this.transactions = transactions;
-        //wallet = new Wallet();
+        wallet = new Wallet();
     }
     public String getUsername() {return username;}
     public String getEmail() {
@@ -26,5 +27,7 @@ public class User implements Serializable {
     public Transactions getTransactions(){
     	return transactions;
     }
+    public Wallet getWallet() {return wallet;}
+
     public String toString() {return "User{" + "username='" + username + '\'' + ", email='" + email + '\'' + ", password='" + password + '\'' + '}';}
 }
