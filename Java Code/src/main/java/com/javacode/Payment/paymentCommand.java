@@ -4,7 +4,7 @@ import com.javacode.Command;
 
 import java.util.Map;
 
-public class paymentCommand implements Command {
+public class PaymentCommand implements Command {
     public void execute(Map m){
 
     }

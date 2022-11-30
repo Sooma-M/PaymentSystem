@@ -1,5 +1,8 @@
 package com.javacode.AdminFunctionality.Discounts;
 
+import com.javacode.AdminFunctionality.Discounts.Overall.OverallDiscount;
+import com.javacode.AdminFunctionality.Discounts.Specific.SpecificDiscount;
+
 import java.util.Map;
 
 public class DiscountFactory {
