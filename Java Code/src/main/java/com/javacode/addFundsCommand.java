@@ -2,9 +2,14 @@ package com.javacode;
 
 import java.util.Map;
 
+import com.javacode.Model.CurrentUser;
+
 public class addFundsCommand implements Command {
+
 	@Override
 	public void execute(Map m) {
-		refundsRequestsModel.addRequestFund(m);
+		CreditCard creditCard = new CreditCard();
+		CurrentUser.getUser().getWallet().addFunds(creditCard, (double) m.get("amount"));
 	}
+
 }
