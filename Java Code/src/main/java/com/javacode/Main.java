@@ -89,7 +89,7 @@ public class Main {
                     {
                         System.out.println("Welcome "+ CurrentUser.getUser().getUsername() +", please select the function that you want to use: ");
                         System.out.println("1. Search for Services");
-                        System.out.println("2. Get Refund");
+                        System.out.println("2. Make Refund");
                         System.out.println("3. Check Discount");
                         System.out.println("4. Add Funds to the Wallet");
                         System.out.println("5. Log-out");

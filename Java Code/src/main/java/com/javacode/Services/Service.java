@@ -1,20 +1,25 @@
 package com.javacode.Services;
 
 import com.javacode.AdminFunctionality.Discounts.Discount;
-import com.javacode.AdminFunctionality.AddProvider.providerObject;
+import com.javacode.AdminFunctionality.AddProvider.ServiceProvider;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Service {
-    private List providers;
-    private Map discounts;
+    private Map providers = new HashMap();
+    private Map discounts = new HashMap();
 
-    public void addProvider(providerObject p) {
-        providers.add(p);
+    public void addProvider(ServiceProvider p) {
+        if (providers.containsKey(p.getProviderName()))
+            throw new IllegalArgumentException("Failed! This provider exist before in the system.");
+        providers.put(p.getProviderName(),p);
     }
-    void removeProvider(){}
-    List getProviders(){return providers;}
+    void removeProvider(String name){
+        if (providers.containsKey(name))
+            providers.remove(name);
+    }
+    Map getProviders(){return providers;}
 
     public void addDiscount(Discount discount){
         removeDiscount(discount.getName());

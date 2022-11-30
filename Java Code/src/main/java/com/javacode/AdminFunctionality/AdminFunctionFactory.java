@@ -1,5 +1,7 @@
 package com.javacode.AdminFunctionality;
 
+import com.javacode.AdminFunctionality.AddProvider.AddNewProviderForm;
+import com.javacode.AdminFunctionality.AddProvider.AddProviderCommand;
 import com.javacode.AdminFunctionality.Discounts.DiscountCommand;
 import com.javacode.AdminFunctionality.Discounts.DiscountForm;
 import com.javacode.Command;
@@ -19,7 +21,7 @@ public class AdminFunctionFactory implements FunctionFactory {
     @Override
     public Command createCommand(String type, Object o) {
         if (type.equals("provider"))
-            return null;
+            return new AddProviderCommand();
         else if (type.equals("discount"))
             return new DiscountCommand();
         else if (type.equals("refund"))
@@ -29,7 +31,7 @@ public class AdminFunctionFactory implements FunctionFactory {
     @Override
     public FormUI createForm(String type) {
         if (type.equals("provider"))
-            return null;
+            return new AddNewProviderForm();
         else if (type.equals("discount"))
             return new DiscountForm();
         else if (type.equals("refund"))
