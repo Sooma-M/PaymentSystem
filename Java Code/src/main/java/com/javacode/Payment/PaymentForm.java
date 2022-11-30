@@ -7,7 +7,7 @@ public class PaymentForm implements FormUI {
     Command command;
     @Override
     public void setCommand(Command c) {
-        command = c;
+        command = new PaymentCommand();
     }
 
     @Override

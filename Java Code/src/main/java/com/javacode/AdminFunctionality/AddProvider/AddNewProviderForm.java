@@ -39,20 +39,45 @@ public class AddNewProviderForm implements FormUI {
         }
         System.out.print("Enter provider name : ");
         String providerName=in.nextLine();
+
+        textFields.add(new TextField("amount"));
+        System.out.println("* Note: your provider (" + providerName + ") now have TextField called amount to take amount you want to pay!");
+
         System.out.print("Enter number of DropDownField you want : ");
         String number1= in.nextLine();
 
         for (int i=0;i<Integer.parseInt(number1);i++)
         {
             System.out.println("DropDownField #"+(i+1));
-            List<String> list = new ArrayList<>();
             System.out.print("enter name of label: ");
             String name = in.nextLine();
+            //check exist!
+            outer: while (true) {
+                for (Field d : dropDownFields)
+                    if (d.getLabel().equals(name)) {
+                        System.out.print("label is exist! enter the name again: ");
+                        name = in.nextLine();
+                        continue outer;
+                    }
+                break;
+            }
+            List<String> list = new ArrayList<>();
             System.out.print("enter number of element in list you want: ");
             String n = in.nextLine();
             for (int j = 0; j < Integer.parseInt(n); j++) {
                 System.out.print("element #" + (j+1) +" : ");
                 String numm = in.nextLine();
+                //check exist!
+                outer: while (true) {
+                    for (String s : list)
+                        if (s.equals(numm))
+                        {
+                            System.out.print("element is exist! enter another: ");
+                            numm = in.nextLine();
+                            continue outer;
+                        }
+                    break;
+                }
                 list.add(numm);
             }
             DropDownField obj = new DropDownField(name, list);
@@ -67,19 +92,41 @@ public class AddNewProviderForm implements FormUI {
             System.out.println("TextField #"+(i+1));
             System.out.print("Enter name of text field : ");
             String name=in.nextLine();
+            //check exist!
+            outer: while (true) {
+                for (Field d : dropDownFields)
+                    if (d.getLabel().equals(name)) {
+                        System.out.print("label is exist! enter the name again: ");
+                        name = in.nextLine();
+                        continue outer;
+                    }
+                for (Field d : textFields)
+                    if (d.getLabel().equals(name)) {
+                        System.out.print("label is exist! enter the name again: ");
+                        name = in.nextLine();
+                        continue outer;
+                    }
+                break;
+            }
             TextField obj=new TextField(name);
             textFields.add(obj);
         }
-        Map m = new HashMap();
-        m.put("service",name.get(Integer.parseInt(choose)-1));
-        m.put("name", providerName);
-        m.put("drop", dropDownFields);
-        m.put("text", textFields);
+
         try {
+            if (Integer.parseInt(number1) == 0 && Integer.parseInt(number2) == 0)
+                throw new IllegalArgumentException("Failed! you cannot add provider without any fields!");
+
+            Map m = new HashMap();
+            m.put("service",name.get(Integer.parseInt(choose)-1));
+            m.put("name", providerName);
+            m.put("drop", dropDownFields);
+            m.put("text", textFields);
+
             command.execute(m);
+            System.out.println("Success!");
+            System.out.println();
         }catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            throw new IllegalArgumentException("");
         }
     }
 }

@@ -1,7 +1,10 @@
 package com.javacode.Services;
 
+import com.javacode.AdminFunctionality.AddProvider.ServiceProvider;
 import com.javacode.Command;
 import com.javacode.FormUI;
+
+import java.util.*;
 
 public class ServiceForm implements FormUI {
     Service service;
@@ -12,28 +15,31 @@ public class ServiceForm implements FormUI {
 
     @Override
     public void getInfoFromUser() {
-        /*List<ServiceProvider> providers = service.getProviders();
-        Scanner in = new Scanner(System.in);
-        if (providers.size() == 0)
+        Map providers = service.getProviders();
+        //create list with providers name
+        List<String> names = new ArrayList<>();
+        for (Object pro : providers.keySet())
+            names.add((String) pro);
+
+        if (names.size() == 0)
         {
             System.out.println("No providers to this service yet.");
             return;
         }
+        Scanner in = new Scanner(System.in);
         System.out.println("Select service provider: ");
-        for (int i=0 ; i<providers.size() ; i++)
-        {
-            System.out.println((i+1) + ". " +providers.get(i).getName());
-        }
+        for (int i=0 ; i<names.size() ; i++)
+            System.out.println((i+1)+". "+names.get(i));
         System.out.print("choose: ");
         int choose = in.nextInt();
-        while (choose <1 || choose> providers.size())
+        while (choose <1 || choose> names.size())
         {
             System.out.print("try again! choose: ");
             choose = in.nextInt();
         }
+        System.out.println();
         Map m = new HashMap();
-        m.put("provider", providers.get(choose - 1));
-        command.execute(m);*/
-        System.out.println("--------------------\n Iam in ServiceForm!!!!!!! \n -------------------");
+        m.put("provider", providers.get(names.get(choose-1)));
+        command.execute(m);
     }
 }
