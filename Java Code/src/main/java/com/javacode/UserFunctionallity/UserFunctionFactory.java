@@ -7,6 +7,10 @@ import com.javacode.UserFunctionallity.Search.ISearch;
 import com.javacode.UserFunctionallity.Search.SearchCommand;
 import com.javacode.UserFunctionallity.Search.SearchForm;
 import com.javacode.UserFunctionallity.Search.SimpleSearch;
+import com.javacode.UserFunctionallity.checkDiscount.Check;
+import com.javacode.UserFunctionallity.checkDiscount.CheckDiscountCommand;
+import com.javacode.UserFunctionallity.checkDiscount.DicountForm;
+import com.javacode.UserFunctionallity.checkDiscount.checkDicount;
 
 public class UserFunctionFactory implements FunctionFactory {
     @Override
@@ -16,7 +20,7 @@ public class UserFunctionFactory implements FunctionFactory {
         else if (type.equals("refund"))
             return null;
         else if (type.equals("discount"))
-            return null;
+            return new checkDicount();
         else if (type.equals("wallet"))
             return null;
         return null;
@@ -28,7 +32,7 @@ public class UserFunctionFactory implements FunctionFactory {
         else if (type.equals("refund"))
             return null;
         else if (type.equals("discount"))
-            return null;
+            return new CheckDiscountCommand((Check) o);
         else if (type.equals("wallet"))
             return null;
         return null;
@@ -40,7 +44,7 @@ public class UserFunctionFactory implements FunctionFactory {
         else if (type.equals("refund"))
             return null;
         else if (type.equals("discount"))
-            return null;
+            return new DicountForm();
         else if (type.equals("wallet"))
             return null;
         return null;

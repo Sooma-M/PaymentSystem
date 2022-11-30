@@ -11,6 +11,7 @@ import java.util.Map;
 public abstract class Service {
     private String name;
     private Map providers = new HashMap();
+<<<<<<< HEAD
     private List<Discount> discounts = new ArrayList<>();
     private boolean cacheAccept;
 
@@ -19,6 +20,9 @@ public abstract class Service {
 
     public void setCacheAccept(boolean cacheAccept) {this.cacheAccept = cacheAccept;}
     public boolean getCacheAccept(){return cacheAccept;}
+=======
+    private ArrayList<Discount> discounts = new ArrayList<>();
+>>>>>>> c4985584767e52b5b8fe0c179bb8721414db3a0a
 
     public void addProvider(ServiceProvider p) {
         if (providers.containsKey(p.getProviderName()))
@@ -36,5 +40,9 @@ public abstract class Service {
     public void addDiscount(Discount discount){
         discounts.add(discount);
     }
+<<<<<<< HEAD
     public List<Discount> getDiscounts(){return discounts;}
+=======
+   public ArrayList<Discount> getDiscounts(){return discounts;}
+>>>>>>> c4985584767e52b5b8fe0c179bb8721414db3a0a
 }
