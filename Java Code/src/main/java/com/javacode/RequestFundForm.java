@@ -1,6 +1,7 @@
 package com.javacode;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.javacode.Model.CurrentUser;
@@ -11,7 +12,7 @@ public class RequestFundForm implements FormUI {
 
 	@Override
 	public void getInfoFromUser() {
-		Map<String, Transactions> m = new HashMap<>();
+		Map<String, List<Transactions>> m = new HashMap<>();
 		m.put(CurrentUser.getUser().getUsername(), CurrentUser.getUser().getTransactions());
 		try {
 			command.execute(m);

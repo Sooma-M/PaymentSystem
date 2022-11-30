@@ -1,15 +1,16 @@
-package com.javacode.Payment;
+package com.javacode;
 
 import java.util.Map;
 
 public class CreditCard implements Payment {
+	private Command command;
     @Override
-    public double pay(Map m){
-        double amount = (double)m.get("amount");
-        if (m.containsKey("service"))
-        {
-            //amount = (discount)m.get("service").addDiscount(amount);
-        }
-        return amount;
+    public int pay(Map m){
+    	try {
+			command.execute(m);
+			return 1;
+		} catch (Exception e) {
+			return 0;
+		}
     }
 }
