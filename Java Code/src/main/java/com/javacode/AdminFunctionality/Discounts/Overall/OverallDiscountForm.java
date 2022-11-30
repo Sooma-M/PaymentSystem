@@ -1,4 +1,4 @@
-package com.javacode.AdminFunctionality.Discounts;
+package com.javacode.AdminFunctionality.Discounts.Overall;
 
 import com.javacode.Command;
 import com.javacode.FormUI;

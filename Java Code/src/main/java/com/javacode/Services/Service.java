@@ -18,6 +18,8 @@ public abstract class Service {
     void removeProvider(String name){
         if (providers.containsKey(name))
             providers.remove(name);
+        else
+            throw new IllegalArgumentException("");
     }
     Map getProviders(){return providers;}
 
@@ -28,6 +30,8 @@ public abstract class Service {
     void removeDiscount(String name){
         if (discounts.containsKey(name))
             discounts.remove(name);
+        else
+            throw new IllegalArgumentException("");
     }
     Map getDiscount(){return discounts;}
 }

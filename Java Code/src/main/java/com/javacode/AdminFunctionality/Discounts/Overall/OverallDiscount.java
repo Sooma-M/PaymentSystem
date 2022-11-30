@@ -1,8 +1,10 @@
-package com.javacode.AdminFunctionality.Discounts;
+package com.javacode.AdminFunctionality.Discounts.Overall;
+
+import com.javacode.AdminFunctionality.Discounts.Discount;
 
 import java.util.Map;
 
-public class OverallDiscount implements Discount{
+public class OverallDiscount implements Discount {
     String name;
     double amount;
     int trans;
