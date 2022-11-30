@@ -10,7 +10,7 @@ import java.util.Map;
 
 public abstract class Service {
     private Map providers = new HashMap();
-    private List<Discount> discounts = new ArrayList<>();
+    private ArrayList<Discount> discounts = new ArrayList<>();
 
     public void addProvider(ServiceProvider p) {
         if (providers.containsKey(p.getProviderName()))
@@ -28,5 +28,5 @@ public abstract class Service {
     public void addDiscount(Discount discount){
         discounts.add(discount);
     }
-    List<Discount> getDiscounts(){return discounts;}
+   public ArrayList<Discount> getDiscounts(){return discounts;}
 }
