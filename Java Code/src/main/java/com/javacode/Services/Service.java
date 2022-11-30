@@ -1,17 +1,17 @@
 package com.javacode.Services;
 
-import com.javacode.Admin.AdminFunctionality.Discounts.Discount;
-import com.javacode.Admin.providerObject;
+import com.javacode.AdminFunctionality.Discounts.Discount;
+import com.javacode.AdminFunctionality.AddProvider.providerObject;
 
 import java.util.List;
 import java.util.Map;
 
 public abstract class Service {
-    private static List providers;
-    private static Map discounts;
+    private List providers;
+    private Map discounts;
 
     public void addProvider(providerObject p) {
-
+        providers.add(p);
     }
     void removeProvider(){}
     List getProviders(){return providers;}

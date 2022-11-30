@@ -9,12 +9,12 @@ public class User implements Serializable {
     private String username, email, password;
     private Transactions transactions;
     Wallet wallet;
-    public User(String username, String email, String password ,Transactions transactions)
+    public User(String username, String email, String password)
     {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.transactions = transactions;
+        this.transactions = new Transactions();
         wallet = new Wallet();
     }
     public String getUsername() {return username;}

@@ -1,7 +1,4 @@
 package com.javacode.Model;
-import com.javacode.Admin.*;
-
-import java.util.ArrayList;
 
 public class AdminDatabase {
 //    private ArrayList<providerObject>providerObjects;

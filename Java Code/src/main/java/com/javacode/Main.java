@@ -1,6 +1,8 @@
 package com.javacode;
 
+import com.javacode.AdminFunctionality.AdminFunctionFactory;
 import com.javacode.Model.CurrentUser;
+import com.javacode.Model.UserAccounts;
 import com.javacode.Sign.Authentication;
 import com.javacode.Sign.SignCommand;
 import com.javacode.Sign.SignFactory;
@@ -11,8 +13,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
+        UserAccounts.addUser(new User("admin","admin","123"));
         while (true)
         {
             List<String> signs = new ArrayList<>();
@@ -43,7 +45,39 @@ public class Main {
                 form.getInfoFromUser();
                 System.out.println("Success");
                 System.out.println();
-                if (choose == 1)
+                //admin
+                if (choose == 1 && CurrentUser.getUser().getUsername().equals("admin"))
+                {
+                    //get values from the admin
+                    List<String> services = new ArrayList<>();
+                    services.add("provider");
+                    services.add("discount");
+                    services.add("refund");
+                    while (true) {
+                        System.out.println("Welcome " + CurrentUser.getUser().getUsername() + ", please select the function that you want to use: ");
+                        System.out.println("1. Add new provider ");
+                        System.out.println("2. Make discount ");
+                        System.out.println("3. List refund ");
+                        System.out.println("4. Access user functionality");
+                        System.out.println("5. Log-out");
+                        System.out.print("choose: ");
+                        choose = in.nextInt();
+                        while (choose < 1 || choose > 5) {
+                            System.out.print("try again! choose: ");
+                            choose = in.nextInt();
+                        }
+                        System.out.println();
+                        if (choose == 5 || choose == 4)
+                            break;
+                        FunctionFactory factory = new AdminFunctionFactory();
+                        Object serve = factory.createFunction(services.get(choose - 1));
+                        c = factory.createCommand(services.get(choose - 1), serve);
+                        form = factory.createForm(services.get(choose - 1));
+                        form.setCommand(c);
+                        form.getInfoFromUser();
+                    }
+                }//user
+                if ((choose == 1 && !CurrentUser.getUser().getUsername().equals("admin")) || choose == 4)
                 {
                     //get values from the user
                     List<String> services = new ArrayList<>();
