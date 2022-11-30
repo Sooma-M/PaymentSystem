@@ -8,7 +8,7 @@ import java.util.*;
 
 public class DicountForm implements FormUI {
     Command command;
-
+    String serviceName;
     @Override
     public void setCommand(Command c) {
         this.command=c;
@@ -17,26 +17,49 @@ public class DicountForm implements FormUI {
     @Override
     public void getInfoFromUser() {
         Map m = new HashMap<>();
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter number of service you want to check discount  :");
-        System.out.println("1.Mobile Recharge Services");
-        System.out.println("2.Internet Payment Services");
-        System.out.println("3.Landline Services");
-        System.out.println("4.Donation Services");
+        List<String> name = new ArrayList<>();
+        name.add("Mobile Recharge Services");
+        name.add("Internet Payment Services");
+        name.add("Landline Services");
+        name.add("Donation Services");
+
+        System.out.println("Enter number of service you want to check discount fot it : ");
+        for (int i =0 ; i<name.size() ; i++)
+            System.out.println((i+1) +". "+name.get(i));
         System.out.print("choose: ");
-        String dis=in.nextLine();
-        m.put("service name",dis);
+        Scanner in = new Scanner(System.in);
+        String choose = in.nextLine();
+        while (Integer.parseInt(choose) < 1 ||Integer.parseInt(choose) > name.size())
+        {
+            System.out.print("try again! choose: ");
+            choose = in.nextLine();
+        }
+        serviceName = name.get(Integer.parseInt(choose)-1);
+        m.put("service",serviceName);
         m.put("form", this);
         command.execute(m);
     }
-    public void DiscountResult(List result){
-        List<Discount>res=new ArrayList<>();
-        res=result;
-        if(res.size()==0){
-            System.out.println("no");
+    public void DiscountResult(List<Discount> result){
+        System.out.println("Discounts for " + serviceName);
+        if(result.size() == 0){
+            System.out.println("No discounts for this service yet! ");
+            return;
         }
-        for (int i=0;i<res.size();i++){
-            System.out.println(res.get(i).getName()+" "+res.get(i).getAmount());
+        for (int i=0;i<result.size();i++)
+            System.out.println(result.get(i).getName()+": "+result.get(i).getAmount() + "%.");
+
+        System.out.println("Do you want to go to this service? y/n");
+        Scanner in = new Scanner(System.in);
+        char again = in.next().charAt(0);
+        while (again != 'y' && again !='n')
+        {
+            System.out.print("Please enter y or n (y for yes and n for no) to continue: ");
+            again = in.next().charAt(0);
+        }
+        if (again == 'y') {
+            Map m = new HashMap<>();
+            m.put("name", serviceName);
+            command.execute(m);
         }
     }
 }

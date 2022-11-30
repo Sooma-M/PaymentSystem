@@ -18,9 +18,9 @@ public class UserFunctionFactory implements FunctionFactory {
         if (type.equals("search"))
             return new SimpleSearch();
         else if (type.equals("refund"))
-            return new checkDicount();
-        else if (type.equals("discount"))
             return null;
+        else if (type.equals("discount"))
+            return new checkDicount();
         else if (type.equals("wallet"))
             return null;
         return null;
