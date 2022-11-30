@@ -1,4 +1,4 @@
-package com.javacode.Model;
+package com.javacode;
 
 public class Transactions {
 	private String type;

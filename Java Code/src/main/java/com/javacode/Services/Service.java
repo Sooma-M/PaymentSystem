@@ -3,12 +3,14 @@ package com.javacode.Services;
 import com.javacode.AdminFunctionality.Discounts.Discount;
 import com.javacode.AdminFunctionality.AddProvider.ServiceProvider;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public abstract class Service {
     private Map providers = new HashMap();
-    private Map discounts = new HashMap();
+    private List<Discount> discounts = new ArrayList<>();
 
     public void addProvider(ServiceProvider p) {
         if (providers.containsKey(p.getProviderName()))
@@ -19,19 +21,12 @@ public abstract class Service {
         if (providers.containsKey(name))
             providers.remove(name);
         else
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("No provider with this name!");
     }
     Map getProviders(){return providers;}
 
     public void addDiscount(Discount discount){
-        removeDiscount(discount.getName());
-        discounts.put(discount.getName(), discount);
+        discounts.add(discount);
     }
-    void removeDiscount(String name){
-        if (discounts.containsKey(name))
-            discounts.remove(name);
-        else
-            throw new IllegalArgumentException("");
-    }
-    Map getDiscount(){return discounts;}
+    List<Discount> getDiscounts(){return discounts;}
 }

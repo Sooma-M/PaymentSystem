@@ -1,12 +1,9 @@
 package com.javacode.Payment;
 
 
-import java.util.Map;
-
 public class Cache implements Payment {
     @Override
-    public double pay(Map m){
-
-        return 0;
+    public void pay(double amount){
+        System.out.println("You will pay " + amount +" !");
     }
 }

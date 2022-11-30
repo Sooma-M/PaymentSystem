@@ -1,21 +1,23 @@
 package com.javacode;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-import com.javacode.Model.Transactions;
+import com.javacode.Payment.Wallet;
 
 public class User implements Serializable {
     private String username, email, password;
     private List<Transactions> transactions;
     Wallet wallet;
-    //Wallet wallet;
+
     public User(String username, String email, String password)
     {
         this.username = username;
         this.email = email;
         this.password = password;
         wallet = new Wallet();
+        transactions = new ArrayList<>();
     }
     public String getUsername() {return username;}
     public String getEmail() {

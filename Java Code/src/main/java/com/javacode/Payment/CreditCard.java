@@ -1,16 +1,12 @@
-package com.javacode;
+package com.javacode.Payment;
 
-import java.util.Map;
+import java.util.Scanner;
 
 public class CreditCard implements Payment {
-	private Command command;
     @Override
-    public int pay(Map m){
-    	try {
-			command.execute(m);
-			return 1;
-		} catch (Exception e) {
-			return 0;
-		}
-    }
+    public void pay(double amount){
+		Scanner in = new Scanner(System.in);
+		System.out.print("Credit Card Number: ");
+
+	}
 }

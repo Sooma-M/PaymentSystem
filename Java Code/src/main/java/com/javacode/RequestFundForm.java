@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.javacode.Model.CurrentUser;
-import com.javacode.Model.Transactions;
 
 public class RequestFundForm implements FormUI {
 	private Command command;

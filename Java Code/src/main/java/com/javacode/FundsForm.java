@@ -1,11 +1,7 @@
 package com.javacode;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
-
-import com.javacode.Model.Transactions;
 
 public class FundsForm implements FormUI {
 	private double amount;

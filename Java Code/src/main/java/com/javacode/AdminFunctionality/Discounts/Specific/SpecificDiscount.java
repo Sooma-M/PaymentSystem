@@ -2,26 +2,10 @@ package com.javacode.AdminFunctionality.Discounts.Specific;
 
 import com.javacode.AdminFunctionality.Discounts.Discount;
 
-import java.util.Map;
-
-public class SpecificDiscount implements Discount {
-    private String name;
-    private double amount;
+public class SpecificDiscount extends Discount {
     public SpecificDiscount(double amount)
     {
-        this.name = "specific";
-        this.amount = amount;
-    }
-    @Override
-    public void makeDiscount(Map m) {
-
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public String getName() {
-        return name;
+        setName("specific");
+        setAmount(amount);
     }
 }

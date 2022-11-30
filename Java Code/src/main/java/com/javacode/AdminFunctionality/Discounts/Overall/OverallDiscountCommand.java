@@ -20,6 +20,8 @@ public class OverallDiscountCommand implements Command {
         services.add("Landline Services");
         services.add("Donation Services");
     }
+
+    public void addService(String service) {services.add(service);}
     @Override
     public void execute(Map m) {
         Discount discount = new DiscountFactory().makeDiscount(m);

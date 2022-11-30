@@ -1,30 +1,23 @@
 package com.javacode.AdminFunctionality.Discounts.Overall;
 
 import com.javacode.AdminFunctionality.Discounts.Discount;
+import com.javacode.Model.CurrentUser;
 
-import java.util.Map;
-
-public class OverallDiscount implements Discount {
-    String name;
-    double amount;
-    int trans;
+public class OverallDiscount extends Discount {
+    private int trans;
     public OverallDiscount(double amount, int trans)
     {
-        name = "overall";
-        this.amount = amount;
+        setName("overall");
+        setAmount(amount);
         this.trans = trans;
     }
+
     @Override
-    public void makeDiscount(Map m) {
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public double getAmount() {
-        return amount;
+    public double makeDiscount(double amount) {
+        if(trans == CurrentUser.getUser().getTransactions().size())
+            return super.makeDiscount(amount);
+        else
+            return amount;
     }
 
     public int getTrans() {

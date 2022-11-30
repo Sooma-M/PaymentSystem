@@ -9,5 +9,6 @@ public class ProviderCommand implements Command {
     public void execute(Map m) {
         Map text = (Map) m.get("text");
         String amount = (String) text.get("amount");
+        
     }
 }

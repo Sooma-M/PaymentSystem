@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.javacode.Model.Transactions;
-
 public class refundsRequestsModel {
 	private static List<Map<String, Transactions>> requestsList = new ArrayList<>();
 	public static List<Map<String, Transactions>> getRequestFunds() {

@@ -3,6 +3,7 @@ package com.javacode;
 import java.util.Map;
 
 import com.javacode.Model.CurrentUser;
+import com.javacode.Payment.CreditCard;
 
 public class addFundsCommand implements Command {
 

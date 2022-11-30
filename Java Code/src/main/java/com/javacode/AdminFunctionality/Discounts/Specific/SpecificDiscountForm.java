@@ -24,24 +24,25 @@ public class SpecificDiscountForm implements FormUI {
             System.out.println((i+1) +". "+name.get(i));
         System.out.print("choose: ");
         Scanner in = new Scanner(System.in);
-        Integer choose = in.nextInt();
-        while (choose < 1 || choose > name.size())
+        String choose = in.nextLine();
+        while (Integer.parseInt(choose) < 1 ||Integer.parseInt(choose) > name.size())
         {
             System.out.print("try again! choose: ");
-            choose = in.nextInt();
+            choose = in.nextLine();
         }
         System.out.print("Enter the DiscountPercent you want (e.g., write 10 for 10%): ");
-        double DiscountPercent= in.nextDouble();
+        String DiscountPercent= in.nextLine();
         //set values to map
-        m.put("CrossedServices",name.get(choose-1));
-        m.put("DiscountPercent",DiscountPercent);
+        m.put("CrossedServices",name.get(Integer.parseInt(choose)-1));
+        m.put("DiscountPercent", Double.parseDouble(DiscountPercent));
         m.put("type", "specific");
         //send values to command
         try {
             command.execute(m);
+            System.out.println("Success");
+            System.out.println();
         }catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            throw ex;
         }
     }
 }

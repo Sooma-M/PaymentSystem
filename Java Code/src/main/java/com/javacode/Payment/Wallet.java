@@ -1,19 +1,14 @@
-package com.javacode;
+package com.javacode.Payment;
 
-import java.util.Map;
+import com.javacode.Command;
 
 public class Wallet implements Payment {
 	private double amount = 0;
 	private Command command;
 
 	@Override
-	public int pay(Map m) {
-		try {
-			command.execute(m);
-			return 1;
-		} catch (Exception e) {
-			return 0;
-		}
+	public void pay(double amount) {
+
 	}
 
 	public void addFunds(CreditCard card, double funds) {

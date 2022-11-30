@@ -19,8 +19,8 @@ public class DiscountForm implements FormUI {
     public void getInfoFromUser() {
             Map<String, String> m = new HashMap<>();
             System.out.println("Choose which type you want: ");
-            System.out.println("1.Overall_discount");
-            System.out.println("2.Specific_discount");
+            System.out.println("1.Overall discount");
+            System.out.println("2.Specific discount");
             System.out.println("3. Exit");
             System.out.print("choose: ");
             Scanner in = new Scanner(System.in);
@@ -30,18 +30,13 @@ public class DiscountForm implements FormUI {
             System.out.print("try again! choose: ");
             choose = in.nextInt();
         }
-        if (choose == 3) {
+        if (choose == 3)
              return;
-        }
-        else{
-            if(choose==1)
-                m.put("Discount_type","Overall_discount");
-            else{
-                m.put("Discount_type","Specific_discount");
-            }
-            command.execute(m);
-        }
 
-
+        if(choose==1)
+            m.put("Discount_type","Overall_discount");
+        else
+            m.put("Discount_type","Specific_discount");
+        command.execute(m);
     }
 }
