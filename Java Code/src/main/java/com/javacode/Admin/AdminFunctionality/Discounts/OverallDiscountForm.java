@@ -1,4 +1,4 @@
-package com.javacode.AdminFunctionality.Discounts;
+package com.javacode.Admin.AdminFunctionality.Discounts;
 import com.javacode.Command;
 import com.javacode.FormUI;
 import java.util.HashMap;

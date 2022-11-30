@@ -1,12 +1,11 @@
-package com.javacode.AdminFunctionality.Discounts;
-import java.util.List;
+package com.javacode.Admin.AdminFunctionality.Discounts;
+
 import com.javacode.Command;
 import com.javacode.FormUI;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class DiscountForm implements FormUI {
     Command command;
@@ -35,7 +34,7 @@ public class DiscountForm implements FormUI {
         }
         else{
             if(choose==1)
-            m.put("Discount_type","Overall_discount");
+                m.put("Discount_type","Overall_discount");
             else{
                 m.put("Discount_type","Specific_discount");
             }

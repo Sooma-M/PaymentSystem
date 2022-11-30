@@ -32,9 +32,10 @@ public class Main{
                 break;
             }
             try {
-                Authentication sign = new SignFactory().createForm(signs.get(choose-1));
+                SignFactory signFactory = new SignFactory();
+                Authentication sign = signFactory.createSign(signs.get(choose-1));
+                FormUI form = signFactory.createForm(signs.get(choose-1));
                 Command c = new SignCommand(sign);
-                FormUI form = new SignFormFactory().createForm(signs.get(choose-1));
                 form.setCommand(c);
                 form.getInfoFromUser();
                 System.out.println("Success");

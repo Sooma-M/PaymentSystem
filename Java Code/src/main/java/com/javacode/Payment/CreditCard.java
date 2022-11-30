@@ -1,7 +1,5 @@
 package com.javacode.Payment;
 
-import com.javacode.discount;
-
 import java.util.Map;
 
 public class CreditCard implements Payment {

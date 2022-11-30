@@ -1,7 +1,5 @@
-package com.javacode.AdminFunctionality.Discounts;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+package com.javacode.Admin.AdminFunctionality.Discounts;
+
 import java.util.Map;
 
 public class OverallDiscount implements Discount{
