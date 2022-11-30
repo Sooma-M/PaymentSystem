@@ -1,5 +1,7 @@
-package com.javacode.AdminFunctionality.Discounts;
+package com.javacode.AdminFunctionality.Discounts.Overall;
 
+import com.javacode.AdminFunctionality.Discounts.Discount;
+import com.javacode.AdminFunctionality.Discounts.DiscountFactory;
 import com.javacode.Command;
 import com.javacode.Services.Service;
 import com.javacode.Services.ServiceFactory;

@@ -5,6 +5,11 @@ import com.javacode.FormUI;
 
 public class PaymentForm implements FormUI {
     Command command;
+    double amount;
+    public PaymentForm(double amount)
+    {
+        this.amount = amount;
+    }
     @Override
     public void setCommand(Command c) {
         command = new PaymentCommand();
@@ -12,6 +17,6 @@ public class PaymentForm implements FormUI {
 
     @Override
     public void getInfoFromUser() {
-
+        System.out.println("in payment form");
     }
 }

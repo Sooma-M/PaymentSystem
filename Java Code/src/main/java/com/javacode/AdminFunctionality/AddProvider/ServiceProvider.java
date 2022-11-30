@@ -7,7 +7,7 @@ public class ServiceProvider {
     private List<DropDownField>dropDownField;
     private List<TextField> textField;
 
-    ServiceProvider(String ProviderName,  List<DropDownField>dropDownField, List<TextField> textField){
+    public ServiceProvider(String ProviderName, List<DropDownField> dropDownField, List<TextField> textField){
         this.dropDownField=dropDownField;
         this.textField=textField;
         this.ProviderName=ProviderName;
