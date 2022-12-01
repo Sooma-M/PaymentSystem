@@ -9,6 +9,7 @@ import com.javacode.Payment.PaymentCommand;
 import com.javacode.Payment.PaymentForm;
 import com.javacode.Transactions;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +21,11 @@ public class ProviderCommand implements Command {
 
         //make discounts
         List<Discount> dicounts = CurrentService.getService().getDiscounts();
+        List<Double> all = new ArrayList<>();
         for (Discount discount : dicounts)
-            amount = discount.makeDiscount(amount);
+            all.add(discount.makeDiscount(amount));
+        for (Double a : all)
+            amount -= a;
 
         //go to pay
         FormUI form = new PaymentForm(amount);

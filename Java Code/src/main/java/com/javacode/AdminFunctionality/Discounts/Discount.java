@@ -5,8 +5,9 @@ public abstract class Discount {
     private double amount;
     public double makeDiscount(double amount)
     {
-        double discount = this.amount/100;
-        return amount * discount;
+        double discountPers = this.amount/100.0;
+        double discount = amount * discountPers;
+        return discount;
 
     }
 

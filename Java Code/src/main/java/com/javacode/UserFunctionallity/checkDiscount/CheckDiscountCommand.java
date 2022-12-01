@@ -19,7 +19,7 @@ public class CheckDiscountCommand implements Command {
         FormUI form = (FormUI) m.get("form");
         if (result.size() != 0)
             form.setCommand(new SelectServiceCommand());
-        if(form instanceof DicountForm)
-            ((DicountForm) form).DiscountResult(result);
+        if(form instanceof checkDicountForm)
+            ((checkDicountForm) form).DiscountResult(result);
     }
 }

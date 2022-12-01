@@ -1,12 +1,13 @@
 package com.javacode.UserFunctionallity.checkDiscount;
 
 import com.javacode.AdminFunctionality.Discounts.Discount;
+import com.javacode.AdminFunctionality.Discounts.Overall.OverallDiscount;
 import com.javacode.Command;
 import com.javacode.FormUI;
 
 import java.util.*;
 
-public class DicountForm implements FormUI {
+public class checkDicountForm implements FormUI {
     Command command;
     String serviceName;
     @Override
@@ -45,8 +46,12 @@ public class DicountForm implements FormUI {
             System.out.println("No discounts for this service yet! ");
             return;
         }
-        for (int i=0;i<result.size();i++)
-            System.out.println(result.get(i).getName()+": "+result.get(i).getAmount() + "%.");
+        for (int i=0;i<result.size();i++) {
+            System.out.print("Type: " + result.get(i).getName() + ", Percentage: " + result.get(i).getAmount() + "% ");
+            if (result.get(i) instanceof OverallDiscount)
+                System.out.print("for transaction #" + ((OverallDiscount) result.get(i)).getTrans());
+            System.out.println();
+        }
 
         System.out.println("Do you want to go to this service? y/n");
         Scanner in = new Scanner(System.in);

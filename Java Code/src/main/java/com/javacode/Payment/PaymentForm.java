@@ -45,12 +45,12 @@ public class PaymentForm implements FormUI {
                 System.out.println("3. "+names.get(2));
             System.out.print("choose: ");
             ans = in.next().charAt(0);
-            while (Character.getNumericValue(ans) < 1 && Character.getNumericValue(ans) > names.size() && CurrentService.getService().getCacheAccept())
+            while ((Character.getNumericValue(ans) < 1 || Character.getNumericValue(ans) > names.size()) && CurrentService.getService().getCacheAccept())
             {
                 System.out.print("try again! choose: ");
                 ans = in.next().charAt(0);
             }
-            while (Character.getNumericValue(ans) < 1 && Character.getNumericValue(ans) > (names.size()-1) && !CurrentService.getService().getCacheAccept())
+            while ((Character.getNumericValue(ans) < 1 || Character.getNumericValue(ans) > (names.size()-1))&& !CurrentService.getService().getCacheAccept())
             {
                 System.out.print("try again! choose: ");
                 ans = in.next().charAt(0);

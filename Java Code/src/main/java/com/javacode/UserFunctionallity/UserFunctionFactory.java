@@ -9,7 +9,7 @@ import com.javacode.UserFunctionallity.Search.SearchForm;
 import com.javacode.UserFunctionallity.Search.SimpleSearch;
 import com.javacode.UserFunctionallity.checkDiscount.Check;
 import com.javacode.UserFunctionallity.checkDiscount.CheckDiscountCommand;
-import com.javacode.UserFunctionallity.checkDiscount.DicountForm;
+import com.javacode.UserFunctionallity.checkDiscount.checkDicountForm;
 import com.javacode.UserFunctionallity.checkDiscount.checkDicount;
 
 public class UserFunctionFactory implements FunctionFactory {
@@ -44,7 +44,7 @@ public class UserFunctionFactory implements FunctionFactory {
         else if (type.equals("refund"))
             return null;
         else if (type.equals("discount"))
-            return new DicountForm();
+            return new checkDicountForm();
         else if (type.equals("wallet"))
             return null;
         return null;
