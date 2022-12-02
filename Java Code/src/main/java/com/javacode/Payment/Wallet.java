@@ -4,7 +4,7 @@ import com.javacode.Command;
 
 public class Wallet implements Payment {
 	private double amount;
-	private Command command;
+
 	public Wallet()
 	{
 		amount = 0;
@@ -16,7 +16,9 @@ public class Wallet implements Payment {
 		this.amount -= amount;
 	}
 
-	public void addFunds(CreditCard card, double funds) {
+	public void addFunds(double funds) {
 		amount += funds;
 	}
+
+	public double getAmount() {return amount;}
 }

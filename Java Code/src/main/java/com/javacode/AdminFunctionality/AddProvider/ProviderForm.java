@@ -9,10 +9,12 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ProviderForm implements FormUI {
-    ServiceProvider provider;
+    List<TextField> textFields;
+    List<DropDownField> dropDownFields;
     Command command;
-    public ProviderForm(ServiceProvider p) {
-        provider = p;
+    public ProviderForm(List<TextField> t, List<DropDownField> d) {
+        textFields = t;
+        dropDownFields = d;
     }
     @Override
     public void setCommand(Command c) {
@@ -21,8 +23,6 @@ public class ProviderForm implements FormUI {
 
     @Override
     public void getInfoFromUser() {
-        List<TextField> textFields = provider.getTextField();
-        List<DropDownField> dropDownFields = provider.getDropDownField();
         Map textResult = new HashMap<>();
         Map dropResult = new HashMap<>();
         Scanner in = new Scanner(System.in);

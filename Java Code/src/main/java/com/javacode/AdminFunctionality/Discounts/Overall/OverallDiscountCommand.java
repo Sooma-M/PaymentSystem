@@ -6,20 +6,12 @@ import com.javacode.Command;
 import com.javacode.Services.Service;
 import com.javacode.Services.ServiceFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class OverallDiscountCommand implements Command {
     List<String> services;
-    public OverallDiscountCommand()
-    {
-        services = new ArrayList<>();
-        services.add("Mobile Recharge Services");
-        services.add("Internet Payment Services");
-        services.add("Landline Services");
-        services.add("Donation Services");
-    }
+    public OverallDiscountCommand(List<String> services) {this.services = services;}
 
     public void addService(String service) {services.add(service);}
     @Override

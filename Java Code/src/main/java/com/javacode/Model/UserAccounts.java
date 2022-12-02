@@ -4,13 +4,25 @@ import com.javacode.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserAccounts {
-    private static List<User> users = new ArrayList<>();
+public class UserAccounts{
+    private static UserAccounts instance = new UserAccounts();
+    private List<User> users;
+    private UserAccounts(){
+        users = new ArrayList<>();
+        addUser(new User("admin","admin","123"));
+        //update here to get info from database
+    }
 
-    public static List<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
-    public static void addUser(User user) {
+    public void addUser(User user) {
         users.add(user);
+        //update here to add to database
+    }
+
+    //Get the only object available
+    public static UserAccounts getInstance(){
+        return instance;
     }
 }

@@ -13,9 +13,9 @@ public class OverallDiscount extends Discount {
     }
 
     @Override
-    public double makeDiscount(double amount) {
+    public double makeDiscount(double original, double amount) {
         if(trans-1 == CurrentUser.getUser().getTransactions().size())
-            return super.makeDiscount(amount);
+            return super.makeDiscount(original,amount);
         else
             return amount;
     }

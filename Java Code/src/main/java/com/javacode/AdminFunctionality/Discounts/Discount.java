@@ -3,11 +3,11 @@ package com.javacode.AdminFunctionality.Discounts;
 public abstract class Discount {
     private String name;
     private double amount;
-    public double makeDiscount(double amount)
+    public double makeDiscount(double original, double amount)
     {
         double discountPers = this.amount/100.0;
-        double discount = amount * discountPers;
-        return discount;
+        double discount = original * discountPers;
+        return amount - discount;
 
     }
 

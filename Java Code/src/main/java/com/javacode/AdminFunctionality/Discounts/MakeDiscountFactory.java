@@ -6,6 +6,7 @@ import com.javacode.AdminFunctionality.Discounts.Specific.SpecificDiscountComman
 import com.javacode.AdminFunctionality.Discounts.Specific.SpecificDiscountForm;
 import com.javacode.Command;
 import com.javacode.FormUI;
+import com.javacode.Model.ServiceList;
 
 public class MakeDiscountFactory {
 
@@ -14,14 +15,14 @@ public class MakeDiscountFactory {
             return new OverallDiscountForm();
         }
         else if(type.equals("Specific_discount")){
-            return new SpecificDiscountForm();
+            return new SpecificDiscountForm(ServiceList.getInstance().getServicesName());
         }
         return null;
     }
     public Command createCommand(String type)
     {
         if(type.equals("Overall_discount")){
-            return new OverallDiscountCommand();
+            return new OverallDiscountCommand(ServiceList.getInstance().getServicesName());
         }
         else if(type.equals("Specific_discount")){
             return new SpecificDiscountCommand();

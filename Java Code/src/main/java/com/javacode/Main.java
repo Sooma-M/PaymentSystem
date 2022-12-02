@@ -2,7 +2,6 @@ package com.javacode;
 
 import com.javacode.AdminFunctionality.AdminFunctionFactory;
 import com.javacode.Model.CurrentUser;
-import com.javacode.Model.UserAccounts;
 import com.javacode.Sign.Authentication;
 import com.javacode.Sign.SignCommand;
 import com.javacode.Sign.SignFactory;
@@ -14,7 +13,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        UserAccounts.addUser(new User("admin","admin","123"));
         while (true)
         {
             List<String> signs = new ArrayList<>();
@@ -40,7 +38,7 @@ public class Main {
                 SignFactory signFactory = new SignFactory();
                 Authentication sign = signFactory.createSign(signs.get(choose-1));
                 FormUI form = signFactory.createForm(signs.get(choose-1));
-                Command c = new SignCommand(sign);
+                Command c = signFactory.createCommand(signs.get(choose-1),sign);
                 form.setCommand(c);
                 form.getInfoFromUser();
                 System.out.println("Success");
@@ -85,6 +83,7 @@ public class Main {
                     services.add("refund");
                     services.add("discount");
                     services.add("wallet");
+                    services.add("pay");
                     while (true)
                     {
                         System.out.println("Welcome "+ CurrentUser.getUser().getUsername() +", please select the function that you want to use: ");
@@ -92,16 +91,17 @@ public class Main {
                         System.out.println("2. Make Refund");
                         System.out.println("3. Check Discount");
                         System.out.println("4. Add Funds to the Wallet");
-                        System.out.println("5. Log-out");
+                        System.out.println("5. Payment for service");
+                        System.out.println("6. Log-out");
                         System.out.print("choose: ");
                         choose = in.nextInt();
-                        while (choose < 1 || choose > 5)
+                        while (choose < 1 || choose > 6)
                         {
                             System.out.print("try again! choose: ");
                             choose = in.nextInt();
                         }
                         System.out.println();
-                        if (choose == 5)
+                        if (choose == 6)
                             break;
                         FunctionFactory factory = new UserFunctionFactory();
                         Object serve = factory.createFunction(services.get(choose-1));

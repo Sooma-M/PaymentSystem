@@ -1,5 +1,6 @@
 package com.javacode.AdminFunctionality.AddProvider;
 
+import com.javacode.AdminFunctionality.Discounts.ApplyDiscount;
 import com.javacode.AdminFunctionality.Discounts.Discount;
 import com.javacode.Command;
 import com.javacode.FormUI;
@@ -7,7 +8,7 @@ import com.javacode.Model.CurrentService;
 import com.javacode.Model.CurrentUser;
 import com.javacode.Payment.PaymentCommand;
 import com.javacode.Payment.PaymentForm;
-import com.javacode.Transactions;
+import com.javacode.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,20 +20,14 @@ public class ProviderCommand implements Command {
         Map text = (Map) m.get("text");
         double amount = Double.parseDouble((String) text.get("amount"));
 
-        //make discounts
-        List<Discount> dicounts = CurrentService.getService().getDiscounts();
-        List<Double> all = new ArrayList<>();
-        for (Discount discount : dicounts)
-            all.add(discount.makeDiscount(amount));
-        for (Double a : all)
-            amount -= a;
+        amount = ApplyDiscount.makeDiscount(amount);
 
         //go to pay
         FormUI form = new PaymentForm(amount);
         form.setCommand(new PaymentCommand());
         try {
             form.getInfoFromUser();
-            Transactions transaction = new Transactions(CurrentService.getService().getName(),amount);
+            Transaction transaction = new Transaction(CurrentService.getService().getName(),amount);
             CurrentUser.getUser().addTransaction(transaction);
         }catch (IllegalArgumentException ex) {
             //System.out.println("");

@@ -1,10 +1,10 @@
 package com.javacode;
 
-public class Transactions {
+public class Transaction {
 	private String type;
 	private double amount;
 
-	public Transactions(String type, double amount) {
+	public Transaction(String type, double amount) {
 		this.type = type;
 		this.amount = amount;
 	}

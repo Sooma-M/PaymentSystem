@@ -2,7 +2,7 @@ package com.javacode.UserFunctionallity.checkDiscount;
 
 import com.javacode.Command;
 import com.javacode.FormUI;
-import com.javacode.Services.SelectServiceCommand;
+import com.javacode.UserFunctionallity.UserFunctionFactory;
 
 import java.util.List;
 import java.util.Map;
@@ -16,9 +16,10 @@ public class CheckDiscountCommand implements Command {
     @Override
     public void execute(Map m) {
         List result = check.check(m);
+
         FormUI form = (FormUI) m.get("form");
         if (result.size() != 0)
-            form.setCommand(new SelectServiceCommand());
+            form.setCommand(new UserFunctionFactory().createCommand("pay",null));
         if(form instanceof checkDicountForm)
             ((checkDicountForm) form).DiscountResult(result);
     }

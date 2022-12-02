@@ -2,7 +2,6 @@ package com.javacode.UserFunctionallity.Search;
 
 import com.javacode.Command;
 import com.javacode.FormUI;
-import com.javacode.Services.SelectServiceCommand;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +23,7 @@ public class SearchForm implements FormUI {
         String text = in.nextLine();
         m.put("search", text);
         m.put("form", this);
+        m.put("type", "pay");
         command.execute(m);
     }
 
@@ -39,16 +39,26 @@ public class SearchForm implements FormUI {
             System.out.println("No Services with this name!");
             System.out.println("Do you want to try again? y/n");
             char again = in.next().charAt(0);
-            while (again != 'y' && again !='n')
+            while (again != 'y' && again != 'Y' && again !='n' && again !='N')
             {
                 System.out.println("Please enter y or n (y for yes and n for no) to continue");
                 again = in.next().charAt(0);
             }
-            if (again == 'y')
+            if (again == 'y' ||again == 'Y')
                 getInfoFromUser();
         }
         else
         {
+            System.out.println("Do you want to continue with this result? y/n");
+            char again = in.next().charAt(0);
+            while (again != 'y' && again != 'Y' && again !='n' && again !='N')
+            {
+                System.out.println("Please enter y or n (y for yes and n for no) to continue");
+                again = in.next().charAt(0);
+            }
+            if (again == 'n' || again == 'N')
+                return;
+
             System.out.print("write service number: ");
             int srv = in.nextInt();
             while (srv <1 || srv> result.size())
@@ -58,6 +68,7 @@ public class SearchForm implements FormUI {
             }
             Map service = new HashMap<>();
             service.put("name", result.get(srv-1));
+            service.put("type", "cli");
 
             command.execute(service);
         }

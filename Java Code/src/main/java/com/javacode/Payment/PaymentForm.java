@@ -44,18 +44,18 @@ public class PaymentForm implements FormUI {
             if(CurrentService.getService().getCacheAccept())
                 System.out.println("3. "+names.get(2));
             System.out.print("choose: ");
-            ans = in.next().charAt(0);
-            while ((Character.getNumericValue(ans) < 1 || Character.getNumericValue(ans) > names.size()) && CurrentService.getService().getCacheAccept())
+            String choose = in.next();
+            while ((Integer.parseInt(choose) < 1 || Integer.parseInt(choose) > names.size()) && CurrentService.getService().getCacheAccept())
             {
                 System.out.print("try again! choose: ");
-                ans = in.next().charAt(0);
+                choose = in.next();
             }
-            while ((Character.getNumericValue(ans) < 1 || Character.getNumericValue(ans) > (names.size()-1))&& !CurrentService.getService().getCacheAccept())
+            while ((Integer.parseInt(choose) < 1 || Integer.parseInt(choose) > (names.size()-1))&& !CurrentService.getService().getCacheAccept())
             {
                 System.out.print("try again! choose: ");
-                ans = in.next().charAt(0);
+                choose = in.next();
             }
-            m.put("way", names.get(Character.getNumericValue(ans)-1));
+            m.put("way", names.get(Integer.parseInt(choose)-1));
         }
         else
             m.put("way", "no change");

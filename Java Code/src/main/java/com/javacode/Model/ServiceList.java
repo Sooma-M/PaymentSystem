@@ -9,12 +9,16 @@ public class ServiceList {
     private ServiceList()
     {
         name = new ArrayList<>();
+        //get from database
         name.add("Mobile Recharge Services");
         name.add("Internet Payment Services");
         name.add("Landline Services");
         name.add("Donation Services");
     }
-    public void addService(String n){name.add(n);}
+    public void addService(String n){
+        name.add(n);
+        //add to database
+    }
     public List<String> getServicesName() {return name;}
 
     //Get the only object available

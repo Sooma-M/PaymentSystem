@@ -7,15 +7,14 @@ import com.javacode.FormUI;
 import java.util.*;
 
 public class ServiceForm implements FormUI {
-    Service service;
+    private Map providers;
     Command command;
-    public ServiceForm(Service s) {service = s;}
+    public ServiceForm(Map p) {providers = p;}
     @Override
     public void setCommand(Command c) {command = c;}
 
     @Override
     public void getInfoFromUser() {
-        Map providers = service.getProviders();
         //create list with providers name
         List<String> names = new ArrayList<>();
         for (Object pro : providers.keySet())
@@ -40,6 +39,7 @@ public class ServiceForm implements FormUI {
         System.out.println();
         Map m = new HashMap();
         m.put("provider", providers.get(names.get(choose-1)));
+        m.put("type","cli");
         command.execute(m);
     }
 }
