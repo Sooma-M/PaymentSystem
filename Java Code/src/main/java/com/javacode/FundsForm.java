@@ -1,10 +1,12 @@
 package com.javacode;
 
+import com.javacode.Model.CurrentUser;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class FundsForm implements FormUI {
-	private double amount;
 	private Command command;
 
 	@Override
@@ -12,14 +14,28 @@ public class FundsForm implements FormUI {
 		this.command = c;
 	}
 	@Override
+
 	public void getInfoFromUser() {
-		Map<String, Double> m = new HashMap<>();
+		Scanner in = new Scanner(System.in);
+		System.out.print("Enter the amount you want: ");
+		double amount = in.nextDouble();
+		while (amount <= 0){
+			System.out.print("Please enter amount more than 0, amount: ");
+			amount = in.nextDouble();
+		}
+		Map m = new HashMap<>();
 		m.put("amount", amount);
+		m.put("way","no change");
+		m.put("form", this);
 		try {
 			command.execute(m);
-		} catch (Exception e) {
-			System.out.println(e.getStackTrace());
+		} catch (IllegalArgumentException ex) {
+			System.out.println(ex.getMessage());
 		}
+	}
+	public void printResult(double amount){
+		System.out.println("You have now " + amount + " in your wallet");
+		System.out.println();
 	}
 
 }
