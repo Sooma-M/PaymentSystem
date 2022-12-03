@@ -1,6 +1,7 @@
 package com.javacode.UserFunctionallity.checkDiscount;
 
 import com.javacode.Command;
+import com.javacode.FormResult;
 import com.javacode.FormUI;
 import com.javacode.UserFunctionallity.UserFunctionFactory;
 
@@ -20,7 +21,8 @@ public class CheckDiscountCommand implements Command {
         FormUI form = (FormUI) m.get("form");
         if (result.size() != 0)
             form.setCommand(new UserFunctionFactory().createCommand("pay",null));
-        if(form instanceof checkDicountForm)
-            ((checkDicountForm) form).DiscountResult(result);
+
+        FormResult formResult = (FormResult) m.get("form");
+        formResult.result(result);
     }
 }

@@ -27,7 +27,11 @@ public class SpecificDiscountForm implements FormUI {
         }
         System.out.print("Enter the DiscountPercent you want (e.g., write 10 for 10%): ");
         String DiscountPercent= in.nextLine();
-
+        while (Integer.parseInt(DiscountPercent) <= 0)
+        {
+            System.out.print("please enter positive value: ");
+            DiscountPercent= in.nextLine();
+        }
         //create map to store values
         Map m = new HashMap<>();
         m.put("CrossedServices",name.get(Integer.parseInt(choose)-1));

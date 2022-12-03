@@ -1,6 +1,7 @@
 package com.javacode.UserFunctionallity.Search;
 
 import com.javacode.Command;
+import com.javacode.FormResult;
 import com.javacode.FormUI;
 import com.javacode.UserFunctionallity.UserFunctionFactory;
 
@@ -15,13 +16,13 @@ public class SearchCommand implements Command {
     }
     @Override
     public void execute(Map m) {
-        List result = search.search(m);
+        List result = search.search((String)m.get("search"));
 
         FormUI form = (FormUI) m.get("form");
         if (result.size() != 0)
             form.setCommand(new UserFunctionFactory().createCommand((String) m.get("type"),null));
 
-        if(form instanceof SearchForm)
-            ((SearchForm) form).searchResult(result);
+        FormResult formResult = (FormResult) m.get("form");
+        formResult.result(result);
     }
 }

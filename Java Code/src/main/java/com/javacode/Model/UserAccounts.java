@@ -10,6 +10,7 @@ public class UserAccounts{
     private UserAccounts(){
         users = new ArrayList<>();
         addUser(new User("admin","admin","123"));
+        addUser(new User("user","user","123"));
         //update here to get info from database
     }
 

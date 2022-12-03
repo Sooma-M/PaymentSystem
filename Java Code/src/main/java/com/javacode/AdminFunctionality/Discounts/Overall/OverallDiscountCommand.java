@@ -13,7 +13,6 @@ public class OverallDiscountCommand implements Command {
     List<String> services;
     public OverallDiscountCommand(List<String> services) {this.services = services;}
 
-    public void addService(String service) {services.add(service);}
     @Override
     public void execute(Map m) {
         Discount discount = new DiscountFactory().makeDiscount(m);

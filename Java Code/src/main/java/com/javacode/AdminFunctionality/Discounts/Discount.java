@@ -15,4 +15,9 @@ public abstract class Discount {
     public void setAmount(double amount) {this.amount = amount;}
     public String getName() {return name;}
     public double getAmount() {return amount;}
+
+    @Override
+    public String toString() {
+        return "Type= '" + name +"', Amount= " + amount;
+    }
 }

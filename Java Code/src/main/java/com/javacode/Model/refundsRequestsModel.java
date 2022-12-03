@@ -2,7 +2,6 @@ package com.javacode.Model;
 
 import com.javacode.Observer;
 import com.javacode.Subject;
-import com.javacode.TransactionRequest;
 
 import java.util.ArrayList;
 import java.util.List;

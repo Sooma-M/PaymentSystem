@@ -1,6 +1,7 @@
 package com.javacode.UserFunctionallity.Search;
 
 import com.javacode.Command;
+import com.javacode.FormResult;
 import com.javacode.FormUI;
 
 import java.util.HashMap;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class SearchForm implements FormUI {
+public class SearchForm implements FormUI, FormResult {
     Command command;
     @Override
     public void setCommand(Command c) {
@@ -27,7 +28,7 @@ public class SearchForm implements FormUI {
         command.execute(m);
     }
 
-    public void searchResult(List result)
+    public void result(List result)
     {
         Scanner in = new Scanner(System.in);
         System.out.println("Search Result: ");

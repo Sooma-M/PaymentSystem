@@ -30,13 +30,9 @@ public class FundsForm implements FormUI {
 		m.put("form", this);
 		try {
 			command.execute(m);
+			System.out.println("Success!");
 		} catch (IllegalArgumentException ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
-	public void printResult(double amount){
-		System.out.println("You have now " + amount + " in your wallet");
-		System.out.println();
-	}
-
 }

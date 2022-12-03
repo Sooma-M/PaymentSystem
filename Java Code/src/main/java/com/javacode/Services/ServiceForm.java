@@ -1,6 +1,5 @@
 package com.javacode.Services;
 
-import com.javacode.AdminFunctionality.AddProvider.ServiceProvider;
 import com.javacode.Command;
 import com.javacode.FormUI;
 
@@ -39,7 +38,6 @@ public class ServiceForm implements FormUI {
         System.out.println();
         Map m = new HashMap();
         m.put("provider", providers.get(names.get(choose-1)));
-        m.put("type","cli");
         command.execute(m);
     }
 }

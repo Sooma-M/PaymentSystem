@@ -51,9 +51,9 @@ public class RequestFundForm implements FormUI {
 		}
 	}
 	public void printResult() {
+		System.out.println("Your requests :");
 		if (req.size() == 0)
 			System.out.println("No requests yet!");
-		System.out.println("Your requests :");
 		for (TransactionRequest t : req)
 			System.out.println("Service: " + t.getTransaction().getType() + ", Amount: " + t.getTransaction().getAmount()
 			+ ", Result for this request: " + t.getState());

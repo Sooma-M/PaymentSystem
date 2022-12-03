@@ -1,24 +1,15 @@
 package com.javacode.Services;
 
-import com.javacode.AdminFunctionality.AddProvider.DropDownField;
-import com.javacode.AdminFunctionality.AddProvider.ServiceProvider;
-import com.javacode.AdminFunctionality.AddProvider.TextField;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.javacode.Providers.Donation.*;
+import com.javacode.Providers.ProviderHandler;
 
 public class DonationService extends Service {
     private static DonationService instance = new DonationService();
     private DonationService(){
-        List<TextField> textFields = new ArrayList<>();
-        List<DropDownField> dropDownFields = new ArrayList<>();
-        textFields.add(new TextField("amount"));
-        textFields.add(new TextField("name"));
-        textFields.add(new TextField("address"));
-
-        addProvider(new ServiceProvider("Cancer Hospital",dropDownFields,textFields));
-        addProvider(new ServiceProvider("Schools",dropDownFields,textFields));
-        addProvider(new ServiceProvider("NGOs (Non profitable organizations)",dropDownFields,textFields));
+        ProviderHandler handler = new DonationGeneralHandler();
+        addProvider("Cancer Hospital", new CancerHospital(new DonationGeneralForm(handler), handler));
+        addProvider("School", new School(new DonationGeneralForm(handler), handler));
+        addProvider("NGO (Non profitable organization)", new NGO(new DonationGeneralForm(handler), handler));
         setCacheAccept(true);
         setName("Donation Services");
     }

@@ -1,7 +1,7 @@
 package com.javacode.Services;
 
 import com.javacode.AdminFunctionality.Discounts.Discount;
-import com.javacode.AdminFunctionality.AddProvider.ServiceProvider;
+import com.javacode.Providers.ServiceProvider;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 public abstract class Service {
     private String name;
-    private Map providers = new HashMap();
+    private Map<String,ServiceProvider> providers = new HashMap<>();
     private List<Discount> discounts = new ArrayList<>();
     private boolean cacheAccept;
 
@@ -20,18 +20,8 @@ public abstract class Service {
     public void setCacheAccept(boolean cacheAccept) {this.cacheAccept = cacheAccept;}
     public boolean getCacheAccept(){return cacheAccept;}
 
-    public void addProvider(ServiceProvider p) {
-        if (providers.containsKey(p.getProviderName()))
-            throw new IllegalArgumentException("Failed! This provider exist before in the system.");
-        providers.put(p.getProviderName(),p);
-    }
-    public void removeProvider(String name){
-        if (providers.containsKey(name))
-            providers.remove(name);
-        else
-            throw new IllegalArgumentException("No provider with this name!");
-    }
-    public Map getProviders(){return providers;}
+    public void addProvider(String n,ServiceProvider p) {providers.put(n,p);}
+    public Map<String,ServiceProvider> getProviders(){return providers;}
 
     public void addDiscount(Discount discount){
         discounts.add(discount);

@@ -1,13 +1,12 @@
 package com.javacode.UserFunctionallity.checkDiscount;
 
-import com.javacode.AdminFunctionality.Discounts.Discount;
-import com.javacode.AdminFunctionality.Discounts.Overall.OverallDiscount;
 import com.javacode.Command;
+import com.javacode.FormResult;
 import com.javacode.FormUI;
 
 import java.util.*;
 
-public class checkDicountForm implements FormUI {
+public class checkDicountForm implements FormUI, FormResult {
     Command command;
     String serviceName;
     List<String> name;
@@ -39,17 +38,14 @@ public class checkDicountForm implements FormUI {
         command.execute(m);
     }
 
-    public void DiscountResult(List<Discount> result){
+    public void result(List result){
         System.out.println("Discounts for " + serviceName);
         if(result.size() == 0){
             System.out.println("No discounts for this service yet! ");
             return;
         }
         for (int i=0;i<result.size();i++) {
-            System.out.print("Type: " + result.get(i).getName() + ", Percentage: " + result.get(i).getAmount() + "% ");
-            if (result.get(i) instanceof OverallDiscount)
-                System.out.print("for transaction #" + ((OverallDiscount) result.get(i)).getTrans());
-            System.out.println();
+            System.out.println( result.get(i).toString() );
         }
 
         System.out.println("Do you want to go to this service? y/n");

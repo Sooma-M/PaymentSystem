@@ -11,20 +11,20 @@ import com.javacode.Model.ServiceList;
 public class MakeDiscountFactory {
 
     public FormUI createForm(String type) {
-        if(type.equals("Overall_discount")){
+        if(type.equals("Overall discount")){
             return new OverallDiscountForm();
         }
-        else if(type.equals("Specific_discount")){
+        else if(type.equals("Specific discount")){
             return new SpecificDiscountForm(ServiceList.getInstance().getServicesName());
         }
         return null;
     }
     public Command createCommand(String type)
     {
-        if(type.equals("Overall_discount")){
+        if(type.equals("Overall discount")){
             return new OverallDiscountCommand(ServiceList.getInstance().getServicesName());
         }
-        else if(type.equals("Specific_discount")){
+        else if(type.equals("Specific discount")){
             return new SpecificDiscountCommand();
         }
         return null;

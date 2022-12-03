@@ -3,8 +3,6 @@ package com.javacode.Sign;
 import com.javacode.Command;
 import com.javacode.FormUI;
 
-import java.util.Map;
-
 public class SignFactory {
     public FormUI createForm(String type) {
         if (type.equals("sign-in"))

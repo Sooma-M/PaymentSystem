@@ -11,14 +11,10 @@ public class PaymentForm implements FormUI {
     private double amount;
     private List<String> names;
 
-    public PaymentForm(double amount) {
+    public PaymentForm(double amount, List<String> names) {
         this.amount = amount;
-        names = new ArrayList<>();
-        names.add("Credit Card");
-        names.add("Wallet");
-        names.add("Cache");
+        this.names = names;
     }
-    public void addPayment(String name){names.add(name);}
     @Override
     public void setCommand(Command c) {
         command = new PaymentCommand();
@@ -27,7 +23,7 @@ public class PaymentForm implements FormUI {
     @Override
     public void getInfoFromUser() {
         Scanner in = new Scanner(System.in);
-        System.out.println("the amount you will pay: "+amount);
+        System.out.println("the amount: "+amount);
         System.out.println("you will pay by credit card, do you want to change? y/n");
         char ans = in.next().charAt(0);
         while (ans != 'y' && ans!='n')

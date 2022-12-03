@@ -4,12 +4,15 @@ import com.javacode.Command;
 import com.javacode.FormUI;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 
 public class DiscountForm implements FormUI {
     Command command;
+    List<String> name;
+    public DiscountForm(List<String> n){this.name = n;}
     @Override
     public void setCommand(Command c) {
         command = c;
@@ -17,26 +20,25 @@ public class DiscountForm implements FormUI {
 
     @Override
     public void getInfoFromUser() {
-            Map<String, String> m = new HashMap<>();
-            System.out.println("Choose which type you want: ");
-            System.out.println("1. Overall discount");
-            System.out.println("2. Specific discount");
-            System.out.println("3. Back");
-            System.out.print("choose: ");
-            Scanner in = new Scanner(System.in);
-            int choose = in.nextInt();
-        while (choose < 1 || choose > 3)
+        Map<String, String> m = new HashMap<>();
+        System.out.println("Choose which type you want: ");
+        for (int i=0 ; i<name.size() ; i++)
+        {
+            System.out.println((i+1) + ". " +name.get(i));
+        }
+        System.out.println((name.size()+1)+". Back");
+        System.out.print("choose: ");
+        Scanner in = new Scanner(System.in);
+        int choose = in.nextInt();
+        while (choose < 1 || choose > name.size()+1)
         {
             System.out.print("try again! choose: ");
             choose = in.nextInt();
         }
-        if (choose == 3)
+        if (choose == name.size()+1)
              return;
 
-        if(choose==1)
-            m.put("Discount_type","Overall_discount");
-        else
-            m.put("Discount_type","Specific_discount");
+        m.put("Discount_type",name.get(choose-1));
         command.execute(m);
     }
 }

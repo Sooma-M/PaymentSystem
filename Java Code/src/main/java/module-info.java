@@ -11,8 +11,6 @@ module com.javacode {
     opens com.javacode.UserFunctionallity.Search to javafx.fxml;
     exports com.javacode.Payment;
     opens com.javacode.Payment to javafx.fxml;
-    exports com.javacode.AdminFunctionality.AddProvider;
-    opens com.javacode.AdminFunctionality.AddProvider to javafx.fxml;
     exports com.javacode.UserFunctionallity.AddFunds;
     opens com.javacode.UserFunctionallity.AddFunds to javafx.fxml;
     exports com.javacode.UserFunctionallity.RefundRequest;
@@ -23,4 +21,6 @@ module com.javacode {
     opens com.javacode.Model to javafx.fxml;
     exports com.javacode.UserFunctionallity.SelectService;
     opens com.javacode.UserFunctionallity.SelectService to javafx.fxml;
+    exports com.javacode.Providers;
+    opens com.javacode.Providers to javafx.fxml;
 }

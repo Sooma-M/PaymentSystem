@@ -1,23 +1,17 @@
 package com.javacode.Services;
 
-
-import com.javacode.AdminFunctionality.AddProvider.DropDownField;
-import com.javacode.AdminFunctionality.AddProvider.ServiceProvider;
-import com.javacode.AdminFunctionality.AddProvider.TextField;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.javacode.Providers.Landline.MonthlyReceipt;
+import com.javacode.Providers.Landline.QuarterReceipt;
+import com.javacode.Providers.Landline.ReceiptForm;
+import com.javacode.Providers.Landline.ReceiptHandler;
+import com.javacode.Providers.ProviderHandler;
 
 public class LandlineService extends Service {
     private static LandlineService instance = new LandlineService();
     private LandlineService(){
-        List<TextField> textFields = new ArrayList<>();
-        List<DropDownField> dropDownFields = new ArrayList<>();
-        textFields.add(new TextField("amount"));
-        textFields.add(new TextField("landline number"));
-
-        addProvider(new ServiceProvider("Monthly receipt",dropDownFields,textFields));
-        addProvider(new ServiceProvider("Quarter receipt ",dropDownFields,textFields));
+        ProviderHandler handler = new ReceiptHandler();
+        addProvider("Monthly Receipt", new MonthlyReceipt(new ReceiptForm(handler), handler));
+        addProvider("Quarter Receipt", new QuarterReceipt(new ReceiptForm(handler), handler));
         setCacheAccept(false);
         setName("Landline Services");
     }
