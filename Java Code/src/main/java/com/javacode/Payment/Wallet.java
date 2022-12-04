@@ -1,7 +1,5 @@
 package com.javacode.Payment;
 
-import com.javacode.Command;
-
 public class Wallet implements Payment {
 	private double amount;
 

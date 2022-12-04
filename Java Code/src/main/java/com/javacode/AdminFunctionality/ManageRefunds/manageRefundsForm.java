@@ -1,18 +1,18 @@
 package com.javacode.AdminFunctionality.ManageRefunds;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 import com.javacode.TransactionRequest;
 
 import java.util.*;
 
 public class manageRefundsForm implements FormUI {
-	private Command command;
+	private Controller controller;
 	List<TransactionRequest> requestsList;
 	public manageRefundsForm(List<TransactionRequest> req){this.requestsList = req;}
 	@Override
-	public void setCommand(Command c) {
-		this.command = c;
+	public void setController(Controller c) {
+		this.controller = c;
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class manageRefundsForm implements FormUI {
 		}
 		Map m = new HashMap<>();
 		m.put("answer", chooses);
-		command.execute(m);
+		controller.execute(m);
 	}
 
 }

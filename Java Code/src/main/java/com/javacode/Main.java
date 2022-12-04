@@ -37,8 +37,8 @@ public class Main {
                 SignFactory signFactory = new SignFactory();
                 Authentication sign = signFactory.createSign(signs.get(choose-1));
                 FormUI form = signFactory.createForm(signs.get(choose-1));
-                Command c = signFactory.createCommand(signs.get(choose-1),sign);
-                form.setCommand(c);
+                Controller c = signFactory.createController(signs.get(choose-1),sign);
+                form.setController(c);
                 form.getInfoFromUser();
                 System.out.println("Success");
                 System.out.println();
@@ -67,9 +67,9 @@ public class Main {
                         }
                         FunctionFactory factory = new AdminFunctionFactory();
                         Object serve = factory.createFunction(services.get(choose - 1));
-                        c = factory.createCommand(services.get(choose - 1), serve);
+                        c = factory.createController(services.get(choose - 1), serve);
                         form = factory.createForm(services.get(choose - 1));
-                        form.setCommand(c);
+                        form.setController(c);
                         form.getInfoFromUser();
                     }
                 }//user
@@ -99,9 +99,9 @@ public class Main {
 
                         FunctionFactory factory = new UserFunctionFactory();
                         Object serve = factory.createFunction(services.get(choose-1));
-                        c = factory.createCommand(services.get(choose-1), serve);
+                        c = factory.createController(services.get(choose-1), serve);
                         form = factory.createForm(services.get(choose-1));
-                        form.setCommand(c);
+                        form.setController(c);
                         form.getInfoFromUser();
                     }
                 }

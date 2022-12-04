@@ -1,13 +1,12 @@
 package com.javacode.Payment;
 
-import com.javacode.AdminFunctionality.Discounts.ApplyDiscount;
-import com.javacode.Command;
+import com.javacode.Controller;
 
 import java.util.Map;
 
-public class PaymentCommand implements Command {
+public class PaymentController implements Controller {
     Payment payment;
-    public PaymentCommand() {
+    public PaymentController() {
         payment = new PaymentFactory().createPayment("Credit Card");
     }
 

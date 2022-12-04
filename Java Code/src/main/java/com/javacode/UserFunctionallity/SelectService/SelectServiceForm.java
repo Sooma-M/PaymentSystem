@@ -1,6 +1,6 @@
 package com.javacode.UserFunctionallity.SelectService;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 
 import java.util.HashMap;
@@ -9,11 +9,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class SelectServiceForm implements FormUI {
-    Command command;
+    Controller controller;
     List<String> services;
     public SelectServiceForm(List<String> s) {services = s;}
     @Override
-    public void setCommand(Command c) {command = c;}
+    public void setController(Controller c) {controller = c;}
 
     @Override
     public void getInfoFromUser() {
@@ -33,6 +33,6 @@ public class SelectServiceForm implements FormUI {
         Map m = new HashMap<>();
         m.put("name", services.get(srv-1));
         m.put("type", "cli");
-        command.execute(m);
+        controller.execute(m);
     }
 }

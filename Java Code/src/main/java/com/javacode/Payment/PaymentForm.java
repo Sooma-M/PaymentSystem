@@ -1,13 +1,13 @@
 package com.javacode.Payment;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 import com.javacode.Model.CurrentService;
 
 import java.util.*;
 
 public class PaymentForm implements FormUI {
-    private Command command;
+    private Controller controller;
     private double amount;
     private List<String> names;
 
@@ -16,8 +16,8 @@ public class PaymentForm implements FormUI {
         this.names = names;
     }
     @Override
-    public void setCommand(Command c) {
-        command = new PaymentCommand();
+    public void setController(Controller c) {
+        controller = new PaymentController();
     }
 
     @Override
@@ -57,7 +57,7 @@ public class PaymentForm implements FormUI {
             m.put("way", "no change");
         m.put("amount", amount);
         try {
-            command.execute(m);
+            controller.execute(m);
             System.out.println("Success!");
             System.out.println();
         }

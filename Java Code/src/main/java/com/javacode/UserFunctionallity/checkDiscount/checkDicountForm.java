@@ -1,20 +1,20 @@
 package com.javacode.UserFunctionallity.checkDiscount;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormResult;
 import com.javacode.FormUI;
 
 import java.util.*;
 
 public class checkDicountForm implements FormUI, FormResult {
-    Command command;
+    Controller controller;
     String serviceName;
     List<String> name;
 
     public checkDicountForm(List<String> name){this.name = name;}
     @Override
-    public void setCommand(Command c) {
-        this.command=c;
+    public void setController(Controller c) {
+        this.controller=c;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class checkDicountForm implements FormUI, FormResult {
         Map m = new HashMap<>();
         m.put("service",serviceName);
         m.put("form", this);
-        command.execute(m);
+        controller.execute(m);
     }
 
     public void result(List result){
@@ -60,7 +60,7 @@ public class checkDicountForm implements FormUI, FormResult {
             Map m = new HashMap<>();
             m.put("name", serviceName);
             m.put("type", "cli");
-            command.execute(m);
+            controller.execute(m);
         }
     }
 }

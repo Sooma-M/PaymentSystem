@@ -2,16 +2,16 @@ package com.javacode.UserFunctionallity.AddFunds;
 
 import java.util.Map;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.Model.CurrentUser;
 
-public class addFundsControl implements Command {
-	Command command;
-	public addFundsControl(Command c){command = c;}
+public class addFundsControl implements Controller {
+	Controller controller;
+	public addFundsControl(Controller c){controller = c;}
 	@Override
 	public void execute(Map m) {
 		try {
-			command.execute(m);
+			controller.execute(m);
 			CurrentUser.getUser().getWallet().addFunds((double) m.get("amount"));
 		}catch (IllegalArgumentException ex){
 			throw ex;

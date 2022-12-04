@@ -1,16 +1,16 @@
 package com.javacode.AdminFunctionality.Discounts.Specific;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 
 import java.util.*;
 public class SpecificDiscountForm implements FormUI {
-    private Command command;
+    private Controller controller;
     List<String> name;
     public SpecificDiscountForm(List<String> name){this.name = name;}
     @Override
-    public void setCommand(Command c) {
-        command = c;
+    public void setController(Controller c) {
+        controller = c;
     }
     @Override
     public void getInfoFromUser() {
@@ -40,7 +40,7 @@ public class SpecificDiscountForm implements FormUI {
 
         //send values to command
         try {
-            command.execute(m);
+            controller.execute(m);
             System.out.println("Success");
             System.out.println();
         }catch (IllegalArgumentException ex) {

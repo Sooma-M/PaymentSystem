@@ -1,6 +1,6 @@
 package com.javacode.Sign;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 
 public class SignFactory {
@@ -20,9 +20,9 @@ public class SignFactory {
         return null;
     }
 
-    public Command createCommand(String type , Object o) {
+    public Controller createController(String type , Object o) {
         if (type.equals("sign-in") || type.equals("sign-up"))
-            return new SignCommand((Authentication) o);
+            return new SignController((Authentication) o);
         return null;
     }
 

@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 import com.javacode.Transaction;
 import com.javacode.TransactionRequest;
 
 public class RequestFundForm implements FormUI {
-	private Command command;
+	private Controller controller;
 	private List<Transaction> transactions;
 	private List<TransactionRequest> req;
 	public RequestFundForm(List<Transaction> t, List<TransactionRequest> r){transactions = t; req = r;}
@@ -44,7 +44,7 @@ public class RequestFundForm implements FormUI {
 		Map m = new HashMap<>();
 		m.put("trans", transactions.get(choose-1));
 		try {
-			command.execute(m);
+			controller.execute(m);
 			System.out.println("Success!");
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -59,7 +59,7 @@ public class RequestFundForm implements FormUI {
 			+ ", Result for this request: " + t.getState());
 	}
 	@Override
-	public void setCommand(Command c) {
-		this.command = c;
+	public void setController(Controller c) {
+		this.controller = c;
 	}
 }

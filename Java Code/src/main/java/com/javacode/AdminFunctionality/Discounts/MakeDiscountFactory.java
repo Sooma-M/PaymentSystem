@@ -1,10 +1,10 @@
 package com.javacode.AdminFunctionality.Discounts;
 
-import com.javacode.AdminFunctionality.Discounts.Overall.OverallDiscountCommand;
+import com.javacode.AdminFunctionality.Discounts.Overall.OverallDiscountController;
 import com.javacode.AdminFunctionality.Discounts.Overall.OverallDiscountForm;
-import com.javacode.AdminFunctionality.Discounts.Specific.SpecificDiscountCommand;
+import com.javacode.AdminFunctionality.Discounts.Specific.SpecificDiscountController;
 import com.javacode.AdminFunctionality.Discounts.Specific.SpecificDiscountForm;
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 import com.javacode.Model.ServiceList;
 
@@ -19,13 +19,13 @@ public class MakeDiscountFactory {
         }
         return null;
     }
-    public Command createCommand(String type)
+    public Controller createController(String type)
     {
         if(type.equals("Overall discount")){
-            return new OverallDiscountCommand(ServiceList.getInstance().getServicesName());
+            return new OverallDiscountController(ServiceList.getInstance().getServicesName());
         }
         else if(type.equals("Specific discount")){
-            return new SpecificDiscountCommand();
+            return new SpecificDiscountController();
         }
         return null;
     }

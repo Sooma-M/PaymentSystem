@@ -1,9 +1,9 @@
 package com.javacode.AdminFunctionality;
 
 import com.javacode.*;
-import com.javacode.AdminFunctionality.Discounts.DiscountCommand;
+import com.javacode.AdminFunctionality.Discounts.DiscountController;
 import com.javacode.AdminFunctionality.Discounts.DiscountForm;
-import com.javacode.AdminFunctionality.ManageRefunds.manageRefundsCommand;
+import com.javacode.AdminFunctionality.ManageRefunds.manageRefundsController;
 import com.javacode.AdminFunctionality.ManageRefunds.manageRefundsForm;
 import com.javacode.Model.TypesOfDiscounts;
 import com.javacode.Model.refundsRequestsModel;
@@ -13,11 +13,11 @@ public class AdminFunctionFactory implements FunctionFactory {
         return null;
     }
     @Override
-    public Command createCommand(String type, Object o) {
+    public Controller createController(String type, Object o) {
         if (type.equals("Make discount"))
-            return new DiscountCommand();
+            return new DiscountController();
         else if (type.equals("List refund"))
-            return new manageRefundsCommand();
+            return new manageRefundsController();
         return null;
     }
     @Override

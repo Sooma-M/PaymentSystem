@@ -1,6 +1,6 @@
 package com.javacode.UserFunctionallity.AddFunds;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 
 import java.util.HashMap;
@@ -8,11 +8,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class FundsForm implements FormUI {
-	private Command command;
+	private Controller controller;
 
 	@Override
-	public void setCommand(Command c) {
-		this.command = c;
+	public void setController(Controller c) {
+		this.controller = c;
 	}
 	@Override
 
@@ -29,7 +29,7 @@ public class FundsForm implements FormUI {
 		m.put("way","no change");
 		m.put("form", this);
 		try {
-			command.execute(m);
+			controller.execute(m);
 			System.out.println("Success!");
 		} catch (IllegalArgumentException ex) {
 			System.out.println(ex.getMessage());

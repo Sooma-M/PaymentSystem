@@ -19,7 +19,7 @@ public abstract class ProviderHandler{
         //go to pay
         PaymentFactory factory = new PaymentFactory();
         FormUI form = factory.createForm(amount);
-        form.setCommand(factory.createCommand());
+        form.setController(factory.createController());
         try {
             form.getInfoFromUser();
 

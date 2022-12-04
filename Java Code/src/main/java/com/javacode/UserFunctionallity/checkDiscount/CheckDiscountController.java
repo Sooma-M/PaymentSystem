@@ -1,6 +1,6 @@
 package com.javacode.UserFunctionallity.checkDiscount;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormResult;
 import com.javacode.FormUI;
 import com.javacode.UserFunctionallity.UserFunctionFactory;
@@ -8,9 +8,9 @@ import com.javacode.UserFunctionallity.UserFunctionFactory;
 import java.util.List;
 import java.util.Map;
 
-public class CheckDiscountCommand implements Command {
+public class CheckDiscountController implements Controller {
       private  Check check;
-      public   CheckDiscountCommand(Check obj){
+      public CheckDiscountController(Check obj){
         this.check=obj;
     }
 
@@ -20,7 +20,7 @@ public class CheckDiscountCommand implements Command {
 
         FormUI form = (FormUI) m.get("form");
         if (result.size() != 0)
-            form.setCommand(new UserFunctionFactory().createCommand("Payment for service",null));
+            form.setController(new UserFunctionFactory().createController("Payment for service",null));
 
         FormResult formResult = (FormResult) m.get("form");
         formResult.result(result);

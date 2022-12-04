@@ -1,6 +1,6 @@
 package com.javacode.Sign;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 
 import java.util.HashMap;
@@ -8,10 +8,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class SignUpForm implements FormUI{
-    private Command command;
+    private Controller controller;
     @Override
-    public void setCommand(Command c) {
-        command = c;
+    public void setController(Controller c) {
+        controller = c;
     }
     @Override
     public void getInfoFromUser() {
@@ -34,7 +34,7 @@ public class SignUpForm implements FormUI{
 
         //send values to command
         try {
-            command.execute(m);
+            controller.execute(m);
         }catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
             throw new IllegalArgumentException("");

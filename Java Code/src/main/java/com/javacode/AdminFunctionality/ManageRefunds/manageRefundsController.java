@@ -1,13 +1,13 @@
 package com.javacode.AdminFunctionality.ManageRefunds;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.TransactionRequest;
 import com.javacode.Model.refundsRequestsModel;
 
 import java.util.List;
 import java.util.Map;
 
-public class manageRefundsCommand implements Command {
+public class manageRefundsController implements Controller {
     @Override
     public void execute(Map m) {
         List<Character> chooses = (List<Character>) m.get("answer");

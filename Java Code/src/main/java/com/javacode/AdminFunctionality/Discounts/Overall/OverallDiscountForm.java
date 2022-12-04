@@ -1,6 +1,6 @@
 package com.javacode.AdminFunctionality.Discounts.Overall;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 
 import java.util.HashMap;
@@ -8,11 +8,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class OverallDiscountForm  implements FormUI {
-    private Command command;
+    private Controller controller;
 
     @Override
-    public void setCommand(Command c) {
-        command = c;
+    public void setController(Controller c) {
+        controller = c;
     }
     @Override
     public void getInfoFromUser() {
@@ -40,7 +40,7 @@ public class OverallDiscountForm  implements FormUI {
         m.put("type", "overall");
         //send values to command
         try {
-            command.execute(m);
+            controller.execute(m);
             System.out.println("Success");
             System.out.println();
         }catch (IllegalArgumentException ex) {

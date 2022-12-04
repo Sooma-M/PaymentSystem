@@ -1,6 +1,6 @@
 package com.javacode.UserFunctionallity.RefundRequest;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.Model.CurrentUser;
 import com.javacode.TransactionRequest;
 import com.javacode.Transaction;
@@ -9,7 +9,7 @@ import com.javacode.Model.refundsRequestsModel;
 import java.util.List;
 import java.util.Map;
 
-public class reqFundsControl implements Command {
+public class reqFundsControl implements Controller {
 	@Override
 	public void execute(Map m) {
 		TransactionRequest transactionRequest = new TransactionRequest(CurrentUser.getUser(), (Transaction) m.get("trans"));

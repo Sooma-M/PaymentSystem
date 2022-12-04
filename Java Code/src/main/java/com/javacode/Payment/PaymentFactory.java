@@ -1,6 +1,6 @@
 package com.javacode.Payment;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 import com.javacode.Model.CurrentUser;
 import com.javacode.Model.PaymentWaysList;
@@ -18,7 +18,7 @@ public class PaymentFactory {
     public FormUI createForm(double amount) {
         return new PaymentForm(amount, PaymentWaysList.getInstance().getWaysName());
     }
-    public Command createCommand(){
-        return new PaymentCommand();
+    public Controller createController(){
+        return new PaymentController();
     }
 }

@@ -1,12 +1,12 @@
 package com.javacode.Sign;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 
 import java.util.Map;
 
-public class SignCommand implements Command{
+public class SignController implements Controller {
     private Authentication sign;
-    public SignCommand(Authentication a)
+    public SignController(Authentication a)
     {
         sign = a;
     }

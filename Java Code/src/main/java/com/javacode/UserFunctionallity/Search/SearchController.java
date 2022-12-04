@@ -1,6 +1,6 @@
 package com.javacode.UserFunctionallity.Search;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormResult;
 import com.javacode.FormUI;
 import com.javacode.UserFunctionallity.UserFunctionFactory;
@@ -8,9 +8,9 @@ import com.javacode.UserFunctionallity.UserFunctionFactory;
 import java.util.List;
 import java.util.Map;
 
-public class SearchCommand implements Command {
+public class SearchController implements Controller {
     ISearch search;
-    public SearchCommand(ISearch s)
+    public SearchController(ISearch s)
     {
         search = s;
     }
@@ -20,7 +20,7 @@ public class SearchCommand implements Command {
 
         FormUI form = (FormUI) m.get("form");
         if (result.size() != 0)
-            form.setCommand(new UserFunctionFactory().createCommand((String) m.get("type"),null));
+            form.setController(new UserFunctionFactory().createController((String) m.get("type"),null));
 
         FormResult formResult = (FormResult) m.get("form");
         formResult.result(result);

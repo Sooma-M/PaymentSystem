@@ -1,6 +1,6 @@
 package com.javacode.AdminFunctionality.Discounts;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 
 import java.util.HashMap;
@@ -10,12 +10,12 @@ import java.util.Scanner;
 
 
 public class DiscountForm implements FormUI {
-    Command command;
+    Controller controller;
     List<String> name;
     public DiscountForm(List<String> n){this.name = n;}
     @Override
-    public void setCommand(Command c) {
-        command = c;
+    public void setController(Controller c) {
+        controller = c;
     }
 
     @Override
@@ -39,6 +39,6 @@ public class DiscountForm implements FormUI {
              return;
 
         m.put("Discount_type",name.get(choose-1));
-        command.execute(m);
+        controller.execute(m);
     }
 }

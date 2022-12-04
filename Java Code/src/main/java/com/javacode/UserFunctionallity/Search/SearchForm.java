@@ -1,6 +1,6 @@
 package com.javacode.UserFunctionallity.Search;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormResult;
 import com.javacode.FormUI;
 
@@ -10,10 +10,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class SearchForm implements FormUI, FormResult {
-    Command command;
+    Controller controller;
     @Override
-    public void setCommand(Command c) {
-        command = c;
+    public void setController(Controller c) {
+        controller = c;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class SearchForm implements FormUI, FormResult {
         m.put("search", text);
         m.put("form", this);
         m.put("type", "Payment for service");
-        command.execute(m);
+        controller.execute(m);
     }
 
     public void result(List result)
@@ -71,7 +71,7 @@ public class SearchForm implements FormUI, FormResult {
             service.put("name", result.get(srv-1));
             service.put("type", "cli");
 
-            command.execute(service);
+            controller.execute(service);
         }
     }
 }

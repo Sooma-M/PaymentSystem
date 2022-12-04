@@ -3,19 +3,19 @@ package com.javacode.UserFunctionallity;
 import com.javacode.*;
 import com.javacode.Model.CurrentUser;
 import com.javacode.Model.ServiceList;
-import com.javacode.Payment.PaymentCommand;
+import com.javacode.Payment.PaymentController;
 import com.javacode.UserFunctionallity.AddFunds.FundsForm;
 import com.javacode.UserFunctionallity.AddFunds.addFundsControl;
 import com.javacode.UserFunctionallity.RefundRequest.RequestFundForm;
 import com.javacode.UserFunctionallity.RefundRequest.reqFundsControl;
 import com.javacode.UserFunctionallity.Search.ISearch;
-import com.javacode.UserFunctionallity.Search.SearchCommand;
+import com.javacode.UserFunctionallity.Search.SearchController;
 import com.javacode.UserFunctionallity.Search.SearchForm;
 import com.javacode.UserFunctionallity.Search.SimpleSearch;
 import com.javacode.UserFunctionallity.SelectService.SelectServiceControl;
 import com.javacode.UserFunctionallity.SelectService.SelectServiceForm;
 import com.javacode.UserFunctionallity.checkDiscount.Check;
-import com.javacode.UserFunctionallity.checkDiscount.CheckDiscountCommand;
+import com.javacode.UserFunctionallity.checkDiscount.CheckDiscountController;
 import com.javacode.UserFunctionallity.checkDiscount.checkDicountForm;
 import com.javacode.UserFunctionallity.checkDiscount.checkDicount;
 
@@ -27,19 +27,19 @@ public class UserFunctionFactory implements FunctionFactory {
         else if (type.equals("Check Discount"))
             return new checkDicount();
         else if (type.equals("Add Funds to the Wallet"))
-            return new PaymentCommand();
+            return new PaymentController();
         return null;
     }
     @Override
-    public Command createCommand(String type, Object o) {
+    public Controller createController(String type, Object o) {
         if (type.equals("Search for Services"))
-            return new SearchCommand((ISearch) o);
+            return new SearchController((ISearch) o);
         else if (type.equals("Make Refund"))
             return new reqFundsControl();
         else if (type.equals("Check Discount"))
-            return new CheckDiscountCommand((Check) o);
+            return new CheckDiscountController((Check) o);
         else if (type.equals("Add Funds to the Wallet"))
-            return new addFundsControl((Command) o);
+            return new addFundsControl((Controller) o);
         else if (type.equals("Payment for service"))
             return new SelectServiceControl();
         return null;

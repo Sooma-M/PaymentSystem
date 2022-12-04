@@ -1,6 +1,6 @@
 package com.javacode.Services;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 
 import java.util.Map;
@@ -23,7 +23,7 @@ public class ServiceFactory{
             return new ServiceForm(providers);
         return null;
     }
-    public Command createCommand(String type){
+    public Controller createController(String type){
         if (type.equals("cli"))
             return new ServiceControl();
         return null;

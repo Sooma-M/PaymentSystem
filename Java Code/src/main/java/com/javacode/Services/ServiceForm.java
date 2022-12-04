@@ -1,16 +1,16 @@
 package com.javacode.Services;
 
-import com.javacode.Command;
+import com.javacode.Controller;
 import com.javacode.FormUI;
 
 import java.util.*;
 
 public class ServiceForm implements FormUI {
     private Map providers;
-    Command command;
+    Controller controller;
     public ServiceForm(Map p) {providers = p;}
     @Override
-    public void setCommand(Command c) {command = c;}
+    public void setController(Controller c) {controller = c;}
 
     @Override
     public void getInfoFromUser() {
@@ -38,6 +38,6 @@ public class ServiceForm implements FormUI {
         System.out.println();
         Map m = new HashMap();
         m.put("provider", providers.get(names.get(choose-1)));
-        command.execute(m);
+        controller.execute(m);
     }
 }
