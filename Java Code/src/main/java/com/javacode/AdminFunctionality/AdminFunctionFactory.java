@@ -14,17 +14,17 @@ public class AdminFunctionFactory implements FunctionFactory {
     }
     @Override
     public Command createCommand(String type, Object o) {
-        if (type.equals("discount"))
+        if (type.equals("Make discount"))
             return new DiscountCommand();
-        else if (type.equals("refund"))
+        else if (type.equals("List refund"))
             return new manageRefundsCommand();
         return null;
     }
     @Override
     public FormUI createForm(String type) {
-        if (type.equals("discount"))
+        if (type.equals("Make discount"))
             return new DiscountForm(TypesOfDiscounts.getInstance().getDiscountNames());
-        else if (type.equals("refund"))
+        else if (type.equals("List refund"))
             return new manageRefundsForm(refundsRequestsModel.getInstance().getRequestsList());
         return null;
     }

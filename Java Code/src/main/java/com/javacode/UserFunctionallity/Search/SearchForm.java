@@ -24,7 +24,7 @@ public class SearchForm implements FormUI, FormResult {
         String text = in.nextLine();
         m.put("search", text);
         m.put("form", this);
-        m.put("type", "pay");
+        m.put("type", "Payment for service");
         command.execute(m);
     }
 

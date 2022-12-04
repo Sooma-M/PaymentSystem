@@ -22,39 +22,39 @@ import com.javacode.UserFunctionallity.checkDiscount.checkDicount;
 public class UserFunctionFactory implements FunctionFactory {
     @Override
     public Object createFunction(String type) {
-        if (type.equals("search"))
+        if (type.equals("Search for Services"))
             return new SimpleSearch();
-        else if (type.equals("discount"))
+        else if (type.equals("Check Discount"))
             return new checkDicount();
-        else if (type.equals("wallet"))
+        else if (type.equals("Add Funds to the Wallet"))
             return new PaymentCommand();
         return null;
     }
     @Override
     public Command createCommand(String type, Object o) {
-        if (type.equals("search"))
+        if (type.equals("Search for Services"))
             return new SearchCommand((ISearch) o);
-        else if (type.equals("refund"))
+        else if (type.equals("Make Refund"))
             return new reqFundsControl();
-        else if (type.equals("discount"))
+        else if (type.equals("Check Discount"))
             return new CheckDiscountCommand((Check) o);
-        else if (type.equals("wallet"))
+        else if (type.equals("Add Funds to the Wallet"))
             return new addFundsControl((Command) o);
-        else if (type.equals("pay"))
+        else if (type.equals("Payment for service"))
             return new SelectServiceControl();
         return null;
     }
     @Override
     public FormUI createForm(String type) {
-        if (type.equals("search"))
+        if (type.equals("Search for Services"))
             return new SearchForm();
-        else if (type.equals("refund"))
+        else if (type.equals("Make Refund"))
             return new RequestFundForm(CurrentUser.getUser().getTransactions(), CurrentUser.getUser().getRequests());
-        else if (type.equals("discount"))
+        else if (type.equals("Check Discount"))
             return new checkDicountForm(ServiceList.getInstance().getServicesName());
-        else if (type.equals("wallet"))
+        else if (type.equals("Add Funds to the Wallet"))
             return new FundsForm();
-        else if (type.equals("pay"))
+        else if (type.equals("Payment for service"))
             return new SelectServiceForm(ServiceList.getInstance().getServicesName());
         return null;
     }

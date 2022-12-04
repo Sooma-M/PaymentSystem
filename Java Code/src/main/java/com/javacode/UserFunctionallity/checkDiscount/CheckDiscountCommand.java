@@ -20,7 +20,7 @@ public class CheckDiscountCommand implements Command {
 
         FormUI form = (FormUI) m.get("form");
         if (result.size() != 0)
-            form.setCommand(new UserFunctionFactory().createCommand("pay",null));
+            form.setCommand(new UserFunctionFactory().createCommand("Payment for service",null));
 
         FormResult formResult = (FormResult) m.get("form");
         formResult.result(result);

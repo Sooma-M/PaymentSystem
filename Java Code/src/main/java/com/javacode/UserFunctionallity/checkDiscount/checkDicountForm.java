@@ -59,6 +59,7 @@ public class checkDicountForm implements FormUI, FormResult {
         if (again == 'y' || again == 'Y') {
             Map m = new HashMap<>();
             m.put("name", serviceName);
+            m.put("type", "cli");
             command.execute(m);
         }
     }

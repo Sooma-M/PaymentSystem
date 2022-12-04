@@ -27,6 +27,6 @@ public class OverallDiscount extends Discount {
     @Override
     public String toString() {
         String result = super.toString();
-        return result + "for transaction #" +trans;
+        return result + " for transaction #" +trans;
     }
 }
