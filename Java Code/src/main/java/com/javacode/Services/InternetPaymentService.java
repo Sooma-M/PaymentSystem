@@ -11,8 +11,8 @@ public class InternetPaymentService extends Service {
         addProvider("Etisalat", new Etisalat(new MobileForm(handler), handler));
 
         handler = new MobileHandler2();
-        addProvider("Orange", new Orange(new MobileForm(handler), handler));
-        addProvider("We", new We(new MobileForm(handler), handler));
+        addProvider("Orange", new Orange(new MobileForm2(handler), handler));
+        addProvider("We", new We(new MobileForm2(handler), handler));
 
         setCacheAccept(false);
         setName("Internet Payment Services");

@@ -11,9 +11,9 @@ import java.util.Map;
 public class SelectServiceControl implements Controller {
     @Override
     public void execute(Map m) {
-        Service s = new ServiceFactory().createService((String) m.get("name"));
-        CurrentService.setService(s);
         ServiceFactory factory = new ServiceFactory();
+        Service s = factory.createService((String) m.get("name"));
+        CurrentService.setService(s);
         FormUI form = factory.createForm((String) m.get("type"), s.getProviders());
         form.setController(factory.createController((String) m.get("type")));
         form.getInfoFromUser();
