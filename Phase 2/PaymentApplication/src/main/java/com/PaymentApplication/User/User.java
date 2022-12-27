@@ -1,6 +1,6 @@
 package com.PaymentApplication.User;
 
-import com.PaymentApplication.UserFunctionallity.Payment.Wallet;
+import com.PaymentApplication.UserFunctionallity.Payment.PaymentWays.Wallet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,14 +41,14 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "{\n" +
                 "username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", transactions=" + transactions +
-                ", requests=" + requests +
-                ", wallet=" + wallet +
-                ", type=" + type +
-                '}';
+                "\nemail='" + email + '\'' +
+                "\npassword='" + password + '\'' +
+                "\ntransactions=" + transactions +
+                "\nrequests=" + requests +
+                "\nwallet=" + wallet +
+                "\ntype=" + type +
+                "\n}";
     }
 }

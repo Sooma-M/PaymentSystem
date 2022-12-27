@@ -10,6 +10,7 @@ import com.PaymentApplication.Exceptions.Sign.UserException;
 import com.PaymentApplication.ServiceProvider.CurrentService;
 import com.PaymentApplication.User.Transaction;
 import com.PaymentApplication.User.CurrentUser;
+import com.PaymentApplication.UserFunctionallity.Payment.PaymentWays.Payment;
 
 import java.util.HashMap;
 
@@ -29,7 +30,7 @@ public class PaymentController{
 
         try {
             payment.pay(m);
-        }catch (PaymentException | ServiceProviderException ex){
+        } catch (IllegalArgumentException ex){
             CurrentService.setService(null);
             CurrentService.setParameters(null);
             throw ex;

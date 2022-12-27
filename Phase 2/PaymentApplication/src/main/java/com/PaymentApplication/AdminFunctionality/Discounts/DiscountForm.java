@@ -1,5 +1,6 @@
 package com.PaymentApplication.AdminFunctionality.Discounts;
 
+import com.PaymentApplication.Exceptions.DiscountTypeException;
 import com.PaymentApplication.Exceptions.Sign.SignException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public class DiscountForm {
         try {
             DiscountController controller = DiscountFactory.createController((String) m.get("type"));
             if (controller == null)
-                throw new IllegalArgumentException("Enter correct type and try again");
+                throw new DiscountTypeException();
             controller.execute(m);
             return "Success";
         } catch (SignException ex) {

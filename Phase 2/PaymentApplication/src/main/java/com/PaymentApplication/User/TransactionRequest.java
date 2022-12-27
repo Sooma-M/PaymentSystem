@@ -13,4 +13,9 @@ public class TransactionRequest{
         return transaction;
     }
     public String getUsername() {return username;}
+
+    @Override
+    public String toString() {
+        return transaction.toString();
+    }
 }

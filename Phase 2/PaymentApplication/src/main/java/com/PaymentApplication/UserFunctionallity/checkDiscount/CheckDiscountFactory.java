@@ -1,10 +1,9 @@
 package com.PaymentApplication.UserFunctionallity.checkDiscount;
 
 public class CheckDiscountFactory {
-    public static CheckDiscountController createController() {
-        return new CheckDiscountController();
-    }
-    public static IChecker checkWay() {
-        return new checkDicount();
+    public static IDiscountChecker createChecker(String type) {
+        if (type.equals("simple"))
+            return new checkDiscount();
+        return null;
     }
 }

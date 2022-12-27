@@ -1,16 +1,14 @@
 package com.PaymentApplication.UserFunctionallity.checkDiscount;
 
-import com.PaymentApplication.Exceptions.Sign.UserException;
-import com.PaymentApplication.User.CurrentUser;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-public class CheckDiscountController {
+@RestController
+public class checkDiscountController {
+    @GetMapping(value = "/user/discount-list")
     public List getDiscounts() {
-        if (CurrentUser.getUser() == null)
-            throw new UserException();
-        List result = CheckDiscountFactory.checkWay().check();
-        return result;
+        return CheckDiscountFactory.createChecker("simple").check();
     }
-
 }

@@ -1,6 +1,9 @@
 package com.PaymentApplication.UserFunctionallity.Payment;
 
 import com.PaymentApplication.User.CurrentUser;
+import com.PaymentApplication.UserFunctionallity.Payment.PaymentWays.Cache;
+import com.PaymentApplication.UserFunctionallity.Payment.PaymentWays.CreditCard;
+import com.PaymentApplication.UserFunctionallity.Payment.PaymentWays.Payment;
 
 public class PaymentFactory {
     public static Payment createPayment(String type){

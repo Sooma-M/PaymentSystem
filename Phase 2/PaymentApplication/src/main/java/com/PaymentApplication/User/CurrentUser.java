@@ -10,7 +10,11 @@ public class CurrentUser {
         return user;
     }
 
-    public static boolean check(UserType type){
-        return (user != null && user.getType().equals(type));
+    public static boolean checkUser(){
+        return user != null;
     }
+    public static boolean checkAdmin(){
+        return user != null && user.getType().equals(UserType.ADMIN);
+    }
+
 }

@@ -45,7 +45,4 @@ public class SignController {
             return "user not exist";
         return u.toString();
     }
-
-
-
 }

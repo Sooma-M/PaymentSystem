@@ -2,6 +2,7 @@ package com.PaymentApplication.AdminFunctionality.ListUserTrans;
 
 import com.PaymentApplication.Exceptions.Sign.AdminException;
 import com.PaymentApplication.Exceptions.Sign.UserException;
+import com.PaymentApplication.Exceptions.UsernameException;
 import com.PaymentApplication.User.CurrentUser;
 import com.PaymentApplication.User.User;
 import com.PaymentApplication.User.UserAccounts;
@@ -30,7 +31,7 @@ public class ListTransController {
             }
         }
         if (!flag)
-            throw new IllegalArgumentException("username didn't exist, try again!");
+            throw new UsernameException();
         return list;
     }
 }
