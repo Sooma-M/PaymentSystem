@@ -2,8 +2,6 @@ package com.PaymentApplication.UserFunctionallity.Payment;
 
 import com.PaymentApplication.User.CurrentUser;
 
-import java.util.Locale;
-
 public class PaymentFactory {
     public static Payment createPayment(String type){
         if(type.toLowerCase().equals("wallet"))

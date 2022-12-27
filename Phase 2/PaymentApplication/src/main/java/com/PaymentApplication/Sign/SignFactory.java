@@ -9,10 +9,11 @@ public class SignFactory {
         return null;
     }
 
-    public static Controller createController(String type) {
-        if (type.equals("sign-in") || type.equals("sign-up"))
-            return new SignController(createSign(type));
+    public static CheckUser createChecker(String type) {
+        if (type.equals("sign-in"))
+            return new SignInChecker();
+        else if (type.equals("sign-up"))
+            return new SignUpChecker();
         return null;
     }
-
 }

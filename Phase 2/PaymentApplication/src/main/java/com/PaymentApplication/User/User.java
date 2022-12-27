@@ -39,5 +39,16 @@ public class User {
     public List<Transaction> getTransactions(){return transactions;}
     public UserType getType() {return type;}
 
-    public String toString() {return "User{" + "username='" + username + '\'' + ", email='" + email + '\'' + ", password='" + password + '\'' + '}';}
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", transactions=" + transactions +
+                ", requests=" + requests +
+                ", wallet=" + wallet +
+                ", type=" + type +
+                '}';
+    }
 }

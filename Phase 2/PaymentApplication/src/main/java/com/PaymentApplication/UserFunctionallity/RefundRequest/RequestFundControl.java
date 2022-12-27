@@ -1,6 +1,7 @@
 package com.PaymentApplication.UserFunctionallity.RefundRequest;
 
 import com.PaymentApplication.AdminFunctionality.ManageRefunds.refundsRequestsModel;
+import com.PaymentApplication.Exceptions.Sign.UserException;
 import com.PaymentApplication.User.CurrentUser;
 import com.PaymentApplication.User.Transaction;
 import com.PaymentApplication.User.TransactionRequest;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 public class RequestFundControl {
 	public ArrayList getTransactions() {
 		if (CurrentUser.getUser() == null)
-			throw new IllegalArgumentException("You need to sign-in first!");
+			throw new UserException();
 		ArrayList trans = new ArrayList();
 		int cnt = 0;
 		for (Transaction t : CurrentUser.getUser().getTransactions()) {
@@ -20,7 +21,7 @@ public class RequestFundControl {
 	}
 	public String makeRequest(Integer id) {
 		if (CurrentUser.getUser() == null)
-			throw new IllegalArgumentException("You need to sign-in first!");
+			throw new UserException();
 		TransactionRequest t = new TransactionRequest(CurrentUser.getUser().getUsername(),
 				CurrentUser.getUser().getTransactions().get(id));
 		CurrentUser.getUser().addRequest(t);
@@ -29,7 +30,7 @@ public class RequestFundControl {
 	}
 	public ArrayList getRequests() {
 		if (CurrentUser.getUser() == null)
-			throw new IllegalArgumentException("You need to sign-in first!");
+			throw new UserException();
 		ArrayList trans = new ArrayList();
 		int cnt = 0;
 		for (TransactionRequest t : CurrentUser.getUser().getRequests()) {

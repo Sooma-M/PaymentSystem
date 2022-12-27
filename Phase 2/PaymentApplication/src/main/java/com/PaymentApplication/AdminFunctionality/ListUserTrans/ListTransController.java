@@ -1,20 +1,20 @@
 package com.PaymentApplication.AdminFunctionality.ListUserTrans;
 
+import com.PaymentApplication.Exceptions.Sign.AdminException;
+import com.PaymentApplication.Exceptions.Sign.UserException;
 import com.PaymentApplication.User.CurrentUser;
 import com.PaymentApplication.User.User;
 import com.PaymentApplication.User.UserAccounts;
 import com.PaymentApplication.User.UserType;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class ListTransController {
     void check(){
         if (CurrentUser.getUser() == null)
-            throw new IllegalArgumentException("You need to sign-in first!");
+            throw new UserException();
         if (CurrentUser.getUser().getType() != UserType.ADMIN)
-            throw new IllegalArgumentException("You need to be admin to be able to use this feature");
+            throw new AdminException();
     }
     public HashMap getAllTrans(String usename){
         check();

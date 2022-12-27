@@ -1,5 +1,6 @@
 package com.PaymentApplication.UserFunctionallity.AddFunds;
 
+import com.PaymentApplication.Exceptions.Sign.UserException;
 import com.PaymentApplication.User.CurrentUser;
 import com.PaymentApplication.User.Transaction;
 import com.PaymentApplication.User.User;
@@ -12,7 +13,7 @@ public class addFundsControl{
 	public Double execute(HashMap m)
 	{
 		if (CurrentUser.getUser() == null)
-			throw new IllegalArgumentException("You need to sign-in first!");
+			throw new UserException();
 
 		Payment payment = PaymentFactory.createPayment("credit-card");
 		payment.pay(m);

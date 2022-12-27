@@ -1,5 +1,6 @@
 package com.PaymentApplication.UserFunctionallity.Payment;
 
+import com.PaymentApplication.Exceptions.Payment.WalletException;
 import com.PaymentApplication.ServiceProvider.CurrentService;
 
 import java.util.HashMap;
@@ -14,7 +15,7 @@ public class Wallet implements Payment {
 	@Override
 	public void pay(HashMap m) {
 		if(this.amount < (double) CurrentService.getParameters().get("amount"))
-			throw new IllegalArgumentException("Failed! you didn't have enough money in your wallet!");
+			throw new WalletException();
 		this.amount -= amount;
 	}
 

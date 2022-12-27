@@ -1,7 +1,7 @@
 package com.PaymentApplication.Sign;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public interface Authentication {
-    void executeSign(Map m);
+    void executeSign(HashMap m);
 }

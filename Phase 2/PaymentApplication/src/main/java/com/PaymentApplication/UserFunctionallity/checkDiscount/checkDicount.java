@@ -2,7 +2,7 @@ package com.PaymentApplication.UserFunctionallity.checkDiscount;
 
 import com.PaymentApplication.AdminFunctionality.Discounts.Discount;
 import com.PaymentApplication.ServiceProvider.ServiceFactory;
-import com.PaymentApplication.ServiceProvider.ServiceList;
+import com.PaymentApplication.UserFunctionallity.Search.ServiceList;
 import com.PaymentApplication.ServiceProvider.ServiceProvider;
 
 import java.util.ArrayList;
