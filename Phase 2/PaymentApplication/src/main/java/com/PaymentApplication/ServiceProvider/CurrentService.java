@@ -9,6 +9,7 @@ public class CurrentService {
 
     public static void setService(ServiceProvider service) {CurrentService.service = service;}
     public static void setParameters(HashMap parameters) {CurrentService.parameters = parameters;}
+    public static void setAmount(double amount){parameters.put("amount", amount);}
 
     public static ServiceProvider getService() {return service;}
     public static HashMap getParameters() {return parameters;}

@@ -1,5 +1,7 @@
 package com.PaymentApplication.UserFunctionallity.Payment;
 
+import com.PaymentApplication.Exceptions.RequestBodyException;
+
 import java.util.HashMap;
 
 public class Cache implements Payment {
@@ -8,6 +10,6 @@ public class Cache implements Payment {
         if (m.containsKey("address")) {
             String addr = (String) m.get("address");
         } else
-            throw new IllegalArgumentException("You need to send correct arguments in body!");
+            throw new RequestBodyException();
     }
 }

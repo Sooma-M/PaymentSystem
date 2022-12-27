@@ -9,4 +9,8 @@ public class CurrentUser {
     public static User getUser() {
         return user;
     }
+
+    public static boolean check(UserType type){
+        return (user != null && user.getType().equals(type));
+    }
 }

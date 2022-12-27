@@ -1,5 +1,6 @@
 package com.PaymentApplication.ServiceProvider.Landline;
 
+import com.PaymentApplication.Exceptions.ServiceProvider.ServiceProviderException;
 import com.PaymentApplication.ServiceProvider.ServiceController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ public class LandlineForm {
             ServiceController service = new ServiceController();
             service.execute("landline",name, m);
             return "Success";
-        }catch (IllegalArgumentException ex) {
+        }catch (ServiceProviderException ex) {
             return ex.getMessage();
         }
     }

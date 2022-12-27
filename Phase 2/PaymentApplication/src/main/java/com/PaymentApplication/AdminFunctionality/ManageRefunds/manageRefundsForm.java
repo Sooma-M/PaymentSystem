@@ -1,5 +1,6 @@
 package com.PaymentApplication.AdminFunctionality.ManageRefunds;
 
+import com.PaymentApplication.Exceptions.Sign.SignException;
 import com.PaymentApplication.UserFunctionallity.RefundRequest.RequestFundControl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,7 @@ public class manageRefundsForm{
 			m.put("status", true);
 			m.put("Transactions", new manageRefundsController().getRequests());
 			return m;
-		} catch (IllegalArgumentException ex) {
+		} catch (SignException ex) {
 			m.put("status", false);
 			m.put("reason", ex.getMessage());
 			return m;
@@ -29,7 +30,7 @@ public class manageRefundsForm{
 			manageRefundsController c = new manageRefundsController();
 			c.execute(m);
 			return "Success";
-		} catch (IllegalArgumentException ex) {
+		} catch (SignException ex) {
 			return ex.getMessage();
 		}
 	}

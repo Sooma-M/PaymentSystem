@@ -1,5 +1,6 @@
 package com.PaymentApplication.UserFunctionallity.RefundRequest;
 
+import com.PaymentApplication.Exceptions.Sign.SignException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,7 @@ public class RequestFundForm{
 			m.put("status", true);
 			m.put("Transactions",new RequestFundControl().getTransactions());
 			return m;
-		}catch (IllegalArgumentException ex) {
+		}catch (SignException ex) {
 			m.put("status", false);
 			m.put("reason", ex.getMessage());
 			return m;
@@ -26,7 +27,7 @@ public class RequestFundForm{
 		try {
 			return new RequestFundControl().makeRequest(id);
 		}
-		catch (IllegalArgumentException ex){
+		catch (SignException ex){
 			return ex.getMessage();
 		}
 	}
@@ -38,7 +39,7 @@ public class RequestFundForm{
 			m.put("Requests", new RequestFundControl().getRequests());
 			return m;
 		}
-		catch (IllegalArgumentException ex) {
+		catch (SignException ex) {
 			m.put("status", false);
 			m.put("reason", ex.getMessage());
 			return m;

@@ -1,5 +1,6 @@
 package com.PaymentApplication.AdminFunctionality.ListUserTrans;
 
+import com.PaymentApplication.Exceptions.Sign.SignException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,7 @@ public class ListTransForm {
             m.put("status", true);
             m.put("Transactions", new ListTransController().getAllTrans(username));
             return m;
-        } catch (IllegalArgumentException ex) {
+        } catch (SignException ex) {
             m.put("status", false);
             m.put("reason", ex.getMessage());
             return m;

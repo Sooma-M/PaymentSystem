@@ -1,5 +1,6 @@
 package com.PaymentApplication.ServiceProvider.Internet;
 
+import com.PaymentApplication.Exceptions.ServiceProvider.ServiceProviderException;
 import com.PaymentApplication.ServiceProvider.ServiceController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ public class InternetForm {
             ServiceController service = new ServiceController();
             service.execute("internet",name, m);
             return "Success";
-        }catch (IllegalArgumentException ex) {
+        }catch (ServiceProviderException ex) {
             return ex.getMessage();
         }
     }

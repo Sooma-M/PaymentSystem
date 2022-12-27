@@ -1,5 +1,6 @@
 package com.PaymentApplication.AdminFunctionality.Discounts;
 
+import com.PaymentApplication.Exceptions.Sign.SignException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ public class DiscountForm {
                 throw new IllegalArgumentException("Enter correct type and try again");
             controller.execute(m);
             return "Success";
-        } catch (IllegalArgumentException ex) {
+        } catch (SignException ex) {
             return ex.getMessage();
         }
     }
