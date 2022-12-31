@@ -15,23 +15,17 @@ import java.util.HashMap;
 public class DonationFactory implements ServiceProviderFactory {
     @Override
     public ServiceProvider createService(String type) {
-        if (type.equals("Hospital") || type.toLowerCase().equals("Cancer Hospital Donation Service"))
-            return CancerHospital.getInstance();
-        else if (type.equals("NGO") || type.toLowerCase().equals("NGO (Non profitable organization) Donation Service"))
-            return NGO.getInstance();
-        else if (type.equals("School") || type.toLowerCase().equals("School Donation Service"))
-            return School.getInstance();
-        return null;
-    }
-
-    @Override
-    public ProviderHandler createHandler(String type) {
-        if (type.equals("Hospital") || type.toLowerCase().equals("Cancer Hospital Donation Service"))
-            return new CancerHospitalHandler();
-        else if (type.equals("NGO") || type.toLowerCase().equals("NGO (Non profitable organization) Donation Service"))
-            return new NGOHandler();
-        else if (type.equals("School") || type.toLowerCase().equals("School Donation Service"))
-            return new SchoolHandler();
+        switch (type.toLowerCase()) {
+            case "cancer-hospital":
+            case "cancer hospital donation service":
+                return CancerHospital.getInstance();
+            case "ngo":
+            case "ngo (non profitable organization) donation service":
+                return NGO.getInstance();
+            case "school":
+            case "school donation service":
+                return School.getInstance();
+        }
         return null;
     }
 }

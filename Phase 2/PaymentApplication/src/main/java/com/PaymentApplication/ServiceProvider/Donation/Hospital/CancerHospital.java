@@ -8,6 +8,7 @@ public class CancerHospital extends ServiceProvider {
     private static CancerHospital instance = new CancerHospital();
     private CancerHospital() {
         super("Cancer Hospital Donation Service", true);
+        setHandler(new CancerHospitalHandler());
     }
     public static CancerHospital getInstance(){
         return instance;

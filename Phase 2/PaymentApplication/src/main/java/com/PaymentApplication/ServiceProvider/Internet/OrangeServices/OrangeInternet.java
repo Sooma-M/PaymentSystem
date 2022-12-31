@@ -8,6 +8,7 @@ public class OrangeInternet extends ServiceProvider {
     private static OrangeInternet instance = new OrangeInternet();
     private OrangeInternet(){
         super("Orange Internet Payment Service", false);
+        setHandler(new OrangeInternetHandler());
     }
     public static OrangeInternet getInstance(){
         return instance;

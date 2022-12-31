@@ -1,44 +1,25 @@
 package com.PaymentApplication.UserFunctionallity.Payment;
 
-import com.PaymentApplication.AdminFunctionality.Discounts.ApplyDiscount;
-import com.PaymentApplication.Exceptions.Payment.CacheException;
-import com.PaymentApplication.Exceptions.Payment.CorrectPaymentException;
-import com.PaymentApplication.Exceptions.Payment.PaymentException;
-import com.PaymentApplication.Exceptions.ServiceProvider.SelectServiceException;
-import com.PaymentApplication.Exceptions.ServiceProvider.ServiceProviderException;
-import com.PaymentApplication.Exceptions.Sign.UserException;
-import com.PaymentApplication.ServiceProvider.CurrentService;
-import com.PaymentApplication.User.Transaction;
-import com.PaymentApplication.User.CurrentUser;
-import com.PaymentApplication.UserFunctionallity.Payment.PaymentWays.Payment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
+import java.util.*;
 
-public class PaymentController{
-    public void execute(String way, HashMap m){
-        if (CurrentUser.getUser() == null)
-            throw new UserException();
-        if (CurrentService.getService() == null)
-            throw new SelectServiceException();
-        if (way.toLowerCase().equals("cache") && !CurrentService.getService().getCacheAccept())
-            throw new CacheException();
-        Payment payment = PaymentFactory.createPayment(way);
-        if (payment == null)
-            throw new CorrectPaymentException();
-        double amount = ApplyDiscount.makeDiscount(Double.parseDouble(CurrentService.getParameters().get("amount").toString()));
-        CurrentService.setAmount(amount);
+@RestController
+public class PaymentController {
 
+    @PostMapping(value = {"/user/pay", "/user/pay/{way}"}) //credit-card, wallet, cache
+    public ResponseEntity<String> payForService(@PathVariable(required = false) String way, @RequestBody HashMap m) {
         try {
-            payment.pay(m);
-        } catch (IllegalArgumentException ex){
-            CurrentService.setService(null);
-            CurrentService.setParameters(null);
-            throw ex;
+            if (way == null) way = "credit-card"; //default
+            IPayment payment = PaymentFactory.createPayment("simple");
+            payment.payForService(way, m);
+            return ResponseEntity.status(HttpStatus.OK).body("Success");
+        }catch (IllegalAccessError ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
+        }catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
-
-        CurrentUser.getUser().addTransaction(new Transaction(CurrentService.getService().getName(),
-                (double) CurrentService.getParameters().get("amount")));
-        CurrentService.setService(null);
-        CurrentService.setParameters(null);
     }
 }

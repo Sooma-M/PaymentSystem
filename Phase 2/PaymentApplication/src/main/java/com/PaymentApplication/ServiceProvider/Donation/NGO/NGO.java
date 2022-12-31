@@ -9,6 +9,7 @@ public class NGO extends ServiceProvider {
     private static NGO instance = new NGO();
     private NGO() {
         super("NGO (Non profitable organization) Donation Service", true);
+        setHandler(new NGOHandler());
     }
     public static NGO getInstance(){
         return instance;

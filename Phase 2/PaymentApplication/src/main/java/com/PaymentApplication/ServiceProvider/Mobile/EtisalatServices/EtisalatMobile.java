@@ -8,6 +8,7 @@ public class EtisalatMobile extends ServiceProvider {
     private static EtisalatMobile instance = new EtisalatMobile();
     private EtisalatMobile(){
         super("Etisalat Mobile Recharge Service",  false);
+        setHandler(new EtisalatMobileHandler());
     }
     public static EtisalatMobile getInstance(){
         return instance;

@@ -1,37 +1,18 @@
 package com.PaymentApplication.AdminFunctionality.ListUserTrans;
 
-import com.PaymentApplication.Exceptions.Sign.AdminException;
-import com.PaymentApplication.Exceptions.Sign.UserException;
-import com.PaymentApplication.Exceptions.UsernameException;
-import com.PaymentApplication.User.CurrentUser;
-import com.PaymentApplication.User.User;
-import com.PaymentApplication.User.UserAccounts;
-import com.PaymentApplication.User.UserType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-
+@RestController
 public class ListTransController {
-    void check(){
-        if (CurrentUser.getUser() == null)
-            throw new UserException();
-        if (CurrentUser.getUser().getType() != UserType.ADMIN)
-            throw new AdminException();
-    }
-    public HashMap getAllTrans(String usename){
-        check();
-        HashMap list = new HashMap();
-        boolean flag = false;
-        for (User u : UserAccounts.getInstance().getUsers())
-        {
-            if (u.getUsername().equals(usename))
-            {
-                flag = true;
-                list.put("Payment Services", u.getTransactions());
-                list.put("Refund Requests",u.getRequests());
-            }
+    @GetMapping(value = "/admin/transactions/{username}")
+    public String showTrans(@PathVariable String username) {
+        try {
+            ITrans trans = TransFactory.createTrans("simple");
+            return "Transactions: \n" + trans.getAllTrans(username).toString();
+        } catch (IllegalArgumentException ex) {
+            return ex.getMessage();
         }
-        if (!flag)
-            throw new UsernameException();
-        return list;
     }
 }

@@ -14,19 +14,14 @@ import java.util.HashMap;
 public class LandlineFactory implements ServiceProviderFactory {
     @Override
     public ServiceProvider createService(String type) {
-        if (type.toLowerCase().equals("monthly-receipt") || type.toLowerCase().equals("Monthly Receipt Landline Services"))
-            return MonthlyReceipt.getInstance();
-        else if (type.toLowerCase().equals("quarter-receipt") || type.toLowerCase().equals("Quarter Receipt Landline Services"))
-            return QuarterReceipt.getInstance();
-        return null;
-    }
-
-    @Override
-    public ProviderHandler createHandler(String type) {
-        if (type.toLowerCase().equals("monthly-receipt") || type.toLowerCase().equals("Monthly Receipt Landline Services"))
-            return new MonthlyReceiptHandler();
-        else if (type.toLowerCase().equals("quarter-receipt") || type.toLowerCase().equals("Quarter Receipt Landline Services"))
-            return new QuarterReceiptHandler();
+        switch (type.toLowerCase()) {
+            case "monthly-receipt":
+            case "monthly receipt landline services":
+                return MonthlyReceipt.getInstance();
+            case "quarter-receipt":
+            case "quarter receipt landline services":
+                return QuarterReceipt.getInstance();
+        }
         return null;
     }
 }

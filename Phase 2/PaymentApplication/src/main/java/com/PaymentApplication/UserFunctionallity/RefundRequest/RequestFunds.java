@@ -1,8 +1,6 @@
 package com.PaymentApplication.UserFunctionallity.RefundRequest;
 
 import com.PaymentApplication.AdminFunctionality.ManageRefunds.refundsRequestsModel;
-import com.PaymentApplication.Exceptions.Sign.UserException;
-import com.PaymentApplication.Exceptions.TransactionException;
 import com.PaymentApplication.User.CurrentUser;
 import com.PaymentApplication.User.Transaction;
 import com.PaymentApplication.User.TransactionRequest;
@@ -13,7 +11,7 @@ import java.util.HashMap;
 public class RequestFunds implements IRefund {
 	public void check() {
 		if (!CurrentUser.checkUser())
-			throw new UserException();
+			throw new IllegalArgumentException("This function not allowed, you need to sign in first!");
 	}
 
 	public ArrayList getTransactions() {
@@ -33,7 +31,7 @@ public class RequestFunds implements IRefund {
 		}
 		//failed
 		if (transaction == null)
-			throw new TransactionException();
+			throw new IllegalArgumentException("you didn't have any transaction with this specifications, try again");
 
 		//success -> save and request
 		TransactionRequest t = new TransactionRequest(CurrentUser.getUser().getUsername(), transaction);

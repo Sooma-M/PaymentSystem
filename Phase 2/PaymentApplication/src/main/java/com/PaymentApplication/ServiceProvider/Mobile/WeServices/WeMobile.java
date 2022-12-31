@@ -8,6 +8,7 @@ public class WeMobile extends ServiceProvider {
     private static WeMobile instance = new WeMobile();
     private WeMobile(){
         super("We Mobile Recharge Service", false);
+        setHandler(new WeMobileHandler());
     }
     public static WeMobile getInstance(){
         return instance;

@@ -1,6 +1,5 @@
 package com.PaymentApplication.Sign;
 
-import com.PaymentApplication.Exceptions.Sign.SignUpException;
 import com.PaymentApplication.User.User;
 import com.PaymentApplication.User.UserAccounts;
 
@@ -15,7 +14,7 @@ public class SignUp implements Authentication{
 
         //failed
         if (user != null)
-            throw new SignUpException();
+            throw new IllegalArgumentException("This account exist! try again");
 
         //success
         User new_user = new User((String) m.get("username"), (String) m.get("email"), (String) m.get("password"));

@@ -1,10 +1,9 @@
 package com.PaymentApplication.UserFunctionallity.AddFunds;
 
-import com.PaymentApplication.Exceptions.Sign.UserException;
 import com.PaymentApplication.User.CurrentUser;
 import com.PaymentApplication.User.Transaction;
 import com.PaymentApplication.User.User;
-import com.PaymentApplication.UserFunctionallity.Payment.PaymentWays.Payment;
+import com.PaymentApplication.UserFunctionallity.Payment.PaymentWay;
 import com.PaymentApplication.UserFunctionallity.Payment.PaymentFactory;
 
 import java.util.HashMap;
@@ -14,10 +13,10 @@ public class SimpleAddFunds implements IFunds{
 	{
 		//check
 		if (!CurrentUser.checkUser())
-			throw new UserException();
+			throw new IllegalAccessError("This function not allowed, you need to sign in first!");
 
 		//pay
-		Payment payment = PaymentFactory.createPayment("credit-card");
+		PaymentWay payment = PaymentFactory.createPaymentWay("credit-card");
 		payment.pay((HashMap) m.get("credit-card-info"));
 
 		//add

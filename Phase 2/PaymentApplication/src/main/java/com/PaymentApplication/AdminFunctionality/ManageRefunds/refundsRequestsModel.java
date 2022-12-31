@@ -27,8 +27,8 @@ public class refundsRequestsModel{
         //add requests to database
     }
 
-    public void Unsubscribe(int index) {
-        requestsList.remove(index);
+    public void Unsubscribe(int id) {
+        requestsList.remove(id);
         //remove requests from database
     }
 }

@@ -1,6 +1,6 @@
 package com.PaymentApplication.User;
 
-import com.PaymentApplication.UserFunctionallity.Payment.PaymentWays.Wallet;
+import com.PaymentApplication.UserFunctionallity.Payment.Wallet;
 
 import java.util.ArrayList;
 import java.util.List;

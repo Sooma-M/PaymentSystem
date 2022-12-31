@@ -8,6 +8,7 @@ public class OrangeMobile extends ServiceProvider {
     private static OrangeMobile instance = new OrangeMobile();
     private OrangeMobile(){
         super("Orange Mobile Recharge Service", false);
+        setHandler(new OrangeMobileHandler());
     }
     public static OrangeMobile getInstance(){
         return instance;

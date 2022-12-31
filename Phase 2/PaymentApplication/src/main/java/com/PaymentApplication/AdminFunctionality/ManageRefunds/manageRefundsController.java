@@ -1,26 +1,31 @@
 package com.PaymentApplication.AdminFunctionality.ManageRefunds;
 
-import com.PaymentApplication.Exceptions.Sign.AdminException;
-import com.PaymentApplication.Exceptions.Sign.UserException;
-import com.PaymentApplication.User.CurrentUser;
-import com.PaymentApplication.User.UserType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
-import java.util.Map;
 
-public class manageRefundsController{
-    void check(){
-        if (CurrentUser.getUser() == null)
-            throw new UserException();
-        if (CurrentUser.getUser().getType() != UserType.ADMIN)
-            throw new AdminException();
-    }
-    public HashMap getRequests(){
-        check();
-        return refundsRequestsModel.getInstance().getRequestsList();
-    }
-    public void execute(Map m){
-        check();
-        refundsRequestsModel.getInstance().Unsubscribe((Integer) m.get("id"));
-    }
+@RestController
+public class manageRefundsController {
+	@GetMapping(value = "/admin/get-refunds")
+	public String showRefunds() {
+		try {
+			IRefundHandler handler = ManageRefundsFactory.createHandler("simple");
+			return "Transactions: \n" + handler.getRequests().toString();
+		} catch (IllegalArgumentException ex) {
+			return ex.getMessage();
+		}
+	}
+	@GetMapping(value = "/admin/manage-refund")
+	public String manageRequest(@RequestBody HashMap m) { //id, status
+		try {
+			IRefundHandler handler = ManageRefundsFactory.createHandler("simple");
+			handler.execute(m);
+			return "Success";
+		} catch (IllegalArgumentException ex) {
+			return ex.getMessage();
+		}
+	}
+
 }

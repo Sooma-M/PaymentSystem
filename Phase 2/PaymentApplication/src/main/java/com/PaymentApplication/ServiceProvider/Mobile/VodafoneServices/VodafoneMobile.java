@@ -8,6 +8,7 @@ public class VodafoneMobile extends ServiceProvider {
     private static VodafoneMobile instance = new VodafoneMobile();
     private VodafoneMobile(){
         super("Vodafone Mobile Recharge Service", false);
+        setHandler(new VodafoneMobileHandler());
     }
     public static VodafoneMobile getInstance(){
         return instance;

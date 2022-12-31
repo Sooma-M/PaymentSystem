@@ -17,4 +17,9 @@ public class ServiceFactory {
             return new DonationFactory();
         return null;
     }
+    public static IServiceHandler createService(String type){
+        if (type.toLowerCase().contains("simple"))
+            return new ServiceHandler();
+        return null;
+    }
 }

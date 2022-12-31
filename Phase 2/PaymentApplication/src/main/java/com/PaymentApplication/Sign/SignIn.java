@@ -1,6 +1,5 @@
 package com.PaymentApplication.Sign;
 
-import com.PaymentApplication.Exceptions.Sign.SignInException;
 import com.PaymentApplication.ServiceProvider.CurrentService;
 import com.PaymentApplication.User.CurrentUser;
 import com.PaymentApplication.User.User;
@@ -15,7 +14,7 @@ public class SignIn implements Authentication {
 
         //failed
         if (user == null)
-            throw new SignInException();
+            throw new IllegalArgumentException("User not exist, please try again");
 
         //success
         CurrentService.setService(null);

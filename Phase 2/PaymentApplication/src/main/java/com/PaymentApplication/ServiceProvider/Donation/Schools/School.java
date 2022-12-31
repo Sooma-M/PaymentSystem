@@ -8,6 +8,7 @@ public class School extends ServiceProvider {
     private static School instance = new School();
     private School() {
         super("School Donation Service", true);
+        setHandler(new SchoolHandler());
     }
     public static School getInstance(){
         return instance;

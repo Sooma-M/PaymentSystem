@@ -1,6 +1,5 @@
 package com.PaymentApplication.UserFunctionallity.Search;
 
-import com.PaymentApplication.Exceptions.Sign.UserException;
 import com.PaymentApplication.User.CurrentUser;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ public class SimpleSearch implements ISearch {
     @Override
     public ArrayList<String> search(String text) {
         if (!CurrentUser.checkUser())
-            throw new UserException();
+            throw new IllegalArgumentException("This function not allowed, you need to sign in first!");
 
         //success
         List<String> name = ServiceList.getInstance().getServicesName();
