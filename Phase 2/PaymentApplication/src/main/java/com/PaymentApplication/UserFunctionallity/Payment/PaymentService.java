@@ -18,22 +18,24 @@ public class PaymentService implements IPayment {
             throw new IllegalArgumentException("This service doesn't accept cache! choose another payment way");
     }
 
-    public void payForService(String way, HashMap m){
-        check(way);
-
+    public String payForService(String way, HashMap m){
         //get payment way
         PaymentWay payment = PaymentFactory.createPaymentWay(way);
         if (payment == null)
-            throw new IllegalArgumentException("You need to enter correct payment way in the URL");
+            throw new IllegalStateException("You need to enter correct payment way in the URL");
+
+        check(way);
 
         //apply discount
         double amount = ApplyDiscount.makeDiscount(Double.parseDouble(m.get("amount").toString()));
-
+        m.put("amount", amount);
         //pay
         payment.pay(m);
 
         //save transaction
         CurrentService.getService().getHandler().saveTransaction(Double.parseDouble(m.get("amount").toString()));
         CurrentService.setService(null);
+
+        return "You are pay " + amount + "$ successfully";
     }
 }

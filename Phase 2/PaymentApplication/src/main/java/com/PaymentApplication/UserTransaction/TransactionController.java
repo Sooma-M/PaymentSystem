@@ -12,7 +12,7 @@ public class TransactionController {
     public ResponseEntity showTrans(@PathVariable String username) {
         try {
             ITransaction trans = TransactionFactory.createTrans("simple");
-            return ResponseEntity.status(HttpStatus.OK).body("Transactions: \n" + trans.getAllTrans(username).toString());
+            return ResponseEntity.status(HttpStatus.OK).body("Service Transactions: \n" + trans.getAllTrans(username).toString());
         } catch (IllegalAccessError ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
         }catch (IllegalArgumentException ex) {

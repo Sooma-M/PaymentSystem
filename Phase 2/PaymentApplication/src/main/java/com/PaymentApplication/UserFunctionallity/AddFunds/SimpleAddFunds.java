@@ -24,7 +24,7 @@ public class SimpleAddFunds implements IFunds{
 		user.getWallet().addFunds(amount);
 
 		//save
-		user.addTransaction(new Transaction("Add funds to wallet", amount));
+		user.addWalletTransaction(new Transaction("Add funds to wallet", amount));
 
 		//return
 		return user.getWallet().getBalance();

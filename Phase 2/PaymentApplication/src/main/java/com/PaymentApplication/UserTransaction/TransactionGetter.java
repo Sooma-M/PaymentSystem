@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TransactionGetter implements ITransaction {
-    public HashMap getAllTrans(String username){
+    public HashMap getAllTrans(String username)
+    {
         CurrentUser.checkAdmin();
         HashMap list = new HashMap();
         boolean flag = false;
@@ -18,7 +19,9 @@ public class TransactionGetter implements ITransaction {
             {
                 flag = true;
                 list.put("Payment Services", u.getTransactions());
+                list.put("Wallet Services", u.getWalletTransactions());
                 list.put("Refund Requests", u.getRequests());
+                break;
             }
         }
         if (!flag)

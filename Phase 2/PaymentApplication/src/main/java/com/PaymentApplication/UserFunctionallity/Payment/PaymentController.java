@@ -14,12 +14,13 @@ public class PaymentController {
         try {
             if (way == null) way = "credit-card"; //default
             IPayment payment = PaymentFactory.createPayment("simple");
-            payment.payForService(way, m);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            return ResponseEntity.status(HttpStatus.OK).body(payment.payForService(way, m));
         }catch (IllegalAccessError ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
         }catch (IllegalArgumentException ex) {
             return ResponseEntity.status(HttpStatus.OK).body(ex.getMessage());
+        }catch (IllegalStateException ex){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
     }
 }

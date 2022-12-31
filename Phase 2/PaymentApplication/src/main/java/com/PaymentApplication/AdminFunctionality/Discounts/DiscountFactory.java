@@ -4,12 +4,12 @@ import java.util.Map;
 
 public class DiscountFactory {
 
-    public static DiscountController createController(String type)
+    public static DiscountHandler createController(String type)
     {
         if(type.toLowerCase().equals("overall"))
-            return new OverallDiscountController();
+            return new OverallDiscountHandler();
         else if(type.toLowerCase().equals("specific"))
-            return new SpecificDiscountController();
+            return new SpecificDiscountHandler();
         return null;
     }
     public static Discount makeDiscount(Map m)

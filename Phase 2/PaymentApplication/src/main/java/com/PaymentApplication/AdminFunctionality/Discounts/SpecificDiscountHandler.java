@@ -7,7 +7,7 @@ import com.PaymentApplication.User.CurrentUser;
 
 import java.util.HashMap;
 
-public class SpecificDiscountController implements DiscountController {
+public class SpecificDiscountHandler implements DiscountHandler {
     @Override
     public void execute(HashMap m) {
         CurrentUser.checkAdmin();
