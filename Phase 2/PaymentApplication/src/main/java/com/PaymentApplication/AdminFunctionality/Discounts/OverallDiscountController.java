@@ -1,13 +1,14 @@
 package com.PaymentApplication.AdminFunctionality.Discounts;
 
 import com.PaymentApplication.ServiceProvider.ServiceFactory;
+import com.PaymentApplication.User.CurrentUser;
 import com.PaymentApplication.UserFunctionallity.Search.ServiceList;
 import com.PaymentApplication.ServiceProvider.ServiceProvider;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class OverallDiscountController extends DiscountController {
+public class OverallDiscountController implements DiscountController {
     List<String> services;
     public OverallDiscountController() {
         this.services = ServiceList.getInstance().getServicesName();
@@ -15,7 +16,7 @@ public class OverallDiscountController extends DiscountController {
 
     @Override
     public void execute(HashMap m) {
-        check();
+        CurrentUser.checkAdmin();
         Discount discount = DiscountFactory.makeDiscount(m);
         for (String service : services)
         {

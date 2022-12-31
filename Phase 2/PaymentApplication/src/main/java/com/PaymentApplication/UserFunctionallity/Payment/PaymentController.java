@@ -15,11 +15,11 @@ public class PaymentController {
             if (way == null) way = "credit-card"; //default
             IPayment payment = PaymentFactory.createPayment("simple");
             payment.payForService(way, m);
-            return ResponseEntity.status(HttpStatus.OK).body("Success");
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }catch (IllegalAccessError ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
         }catch (IllegalArgumentException ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            return ResponseEntity.status(HttpStatus.OK).body(ex.getMessage());
         }
     }
 }

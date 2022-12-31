@@ -16,19 +16,11 @@ public class ServiceController {
         IServiceHandler handler = ServiceFactory.createService("simple");
         try {
             handler.saveService(type, name, m);
-            return ResponseEntity.status(HttpStatus.OK).body("Success");
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }catch (IllegalAccessError ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
         }catch (IllegalArgumentException ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-        }
-    }
-
-    @GetMapping(value = "/user/provider/get-fees")
-    public ResponseEntity<String> getFees(){
-        IServiceHandler handler = ServiceFactory.createService("simple");
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body("Fees: " + handler.getFees());
-        }catch (IllegalArgumentException ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
     }
 }

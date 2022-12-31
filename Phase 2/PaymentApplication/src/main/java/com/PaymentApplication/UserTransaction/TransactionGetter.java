@@ -1,21 +1,15 @@
-package com.PaymentApplication.AdminFunctionality.ListUserTrans;
+package com.PaymentApplication.UserTransaction;
 
 import com.PaymentApplication.User.CurrentUser;
 import com.PaymentApplication.User.User;
 import com.PaymentApplication.User.UserAccounts;
-import com.PaymentApplication.User.UserType;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ListTrans implements ITrans{
-    void check(){
-        if (CurrentUser.getUser() == null)
-            throw new IllegalArgumentException("You need to sign-in first!");
-        if (CurrentUser.getUser().getType() != UserType.ADMIN)
-            throw new IllegalArgumentException("You need to be admin to be able to use this feature");
-    }
+public class TransactionGetter implements ITransaction {
     public HashMap getAllTrans(String username){
-        check();
+        CurrentUser.checkAdmin();
         HashMap list = new HashMap();
         boolean flag = false;
         for (User u : UserAccounts.getInstance().getUsers())
@@ -24,11 +18,17 @@ public class ListTrans implements ITrans{
             {
                 flag = true;
                 list.put("Payment Services", u.getTransactions());
-                list.put("Refund Requests",u.getRequests());
+                list.put("Refund Requests", u.getRequests());
             }
         }
         if (!flag)
             throw new IllegalArgumentException("username didn't exist, try again!");
         return list;
+    }
+
+    public ArrayList getTransactions() {
+        CurrentUser.checkUser();
+        ArrayList trans = (ArrayList) CurrentUser.getUser().getTransactions();
+        return trans;
     }
 }

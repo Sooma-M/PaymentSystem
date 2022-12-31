@@ -11,9 +11,9 @@ public class Wallet implements PaymentWay {
 
 	@Override
 	public void pay(HashMap m) {
-		if(this.balance < (double) CurrentService.getService().getParameters().get("amount"))
+		if(this.balance < Double.parseDouble(m.get("amount").toString()))
 			throw new IllegalArgumentException("Failed! you didn't have enough money in your wallet!");
-		this.balance -= (double)CurrentService.getService().getParameters().get("amount");
+		this.balance -= Double.parseDouble(m.get("amount").toString());
 	}
 
 	public void addFunds(double funds) {balance += funds;}

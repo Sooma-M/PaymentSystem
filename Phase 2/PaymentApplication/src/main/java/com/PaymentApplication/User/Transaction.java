@@ -22,6 +22,6 @@ public class Transaction {
 		return "{" +
 				"service name='" + service + '\'' +
 				", amount=" + amount +
-				'}';
+				"} \n";
 	}
 }

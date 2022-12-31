@@ -9,19 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RequestFunds implements IRefund {
-	public void check() {
-		if (!CurrentUser.checkUser())
-			throw new IllegalArgumentException("This function not allowed, you need to sign in first!");
-	}
-
-	public ArrayList getTransactions() {
-		check();
-		ArrayList trans = (ArrayList) CurrentUser.getUser().getTransactions();
-		return trans;
-	}
-
-	public String makeRequest(HashMap m) {
-		check();
+	public void makeRequest(HashMap m) {
+		CurrentUser.checkUser();
 		Transaction transaction = null;
 		for (Transaction trans : CurrentUser.getUser().getTransactions()) {
 			if (trans.getService().equals(m.get("service-name")) && (trans.getAmount() == Double.parseDouble(m.get("amount").toString()))) {
@@ -37,11 +26,10 @@ public class RequestFunds implements IRefund {
 		TransactionRequest t = new TransactionRequest(CurrentUser.getUser().getUsername(), transaction);
 		CurrentUser.getUser().addRequest(t);
 		refundsRequestsModel.getInstance().Subscribe(t);
-		return "this request send to the admin successfully";
 	}
 
 	public ArrayList getRequests() {
-		check();
+		CurrentUser.checkUser();
 		ArrayList trans = (ArrayList) CurrentUser.getUser().getRequests();
 		return trans;
 	}

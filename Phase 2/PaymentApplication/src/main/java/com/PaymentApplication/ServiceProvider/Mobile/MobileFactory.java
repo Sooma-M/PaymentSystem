@@ -10,19 +10,14 @@ import com.PaymentApplication.ServiceProvider.ServiceProviderFactory;
 public class MobileFactory implements ServiceProviderFactory {
     @Override
     public ServiceProvider createService(String type) {
-        switch (type.toLowerCase()) {
-            case "etisalat":
-            case "etisalat mobile recharge service":
-                return EtisalatMobile.getInstance();
-            case "vodafone":
-            case "vodafone mobile recharge service":
-                return VodafoneMobile.getInstance();
-            case "orange":
-            case "orange mobile recharge service":
-                return OrangeMobile.getInstance();
-            case "we":
-            case "we mobile recharge service":
-                return WeMobile.getInstance();
+        if (type.toLowerCase().contains("etisalat")) {
+            return EtisalatMobile.getInstance();
+        } else if (type.toLowerCase().contains("vodafone")) {
+            return VodafoneMobile.getInstance();
+        } else if (type.toLowerCase().contains("orange")) {
+            return OrangeMobile.getInstance();
+        } else if (type.toLowerCase().contains("we")) {
+            return WeMobile.getInstance();
         }
         return null;
     }

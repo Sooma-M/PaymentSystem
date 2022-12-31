@@ -1,11 +1,16 @@
 package com.PaymentApplication.UserFunctionallity.RefundRequest;
 
+import org.apache.tomcat.util.buf.StringUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 public class RefundRequestController {
@@ -15,31 +20,25 @@ public class RefundRequestController {
 		control = RefundRequestFactory.createRefund("simple");
 	}
 
-	@GetMapping(value = "/user/transactions")
-	public String getTransactions() {
-		try {
-			return "Transactions: " + control.getTransactions().toString();
-		}catch (IllegalArgumentException ex) {
-			return ex.getMessage();
-		}
-	}
-
 	@PostMapping(value = "/user/refund-request")
-	public String makeRequest(@RequestBody HashMap m) { //service-name, amount
+	public ResponseEntity makeRequest(@RequestBody HashMap m) { //service-name, amount
 		try {
-			return control.makeRequest(m);
+			control.makeRequest(m);
+			return ResponseEntity.status(HttpStatus.CREATED).build();
 		}
-		catch (IllegalArgumentException ex){
-			return ex.getMessage();
+		catch (IllegalAccessError ex){
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
+		}catch (IllegalArgumentException ex){
+			return ResponseEntity.status(HttpStatus.OK).body(ex.getMessage());
 		}
 	}
 
 	@GetMapping(value = "/user/refund-requests")
-	public String getRequests() {
+	public ResponseEntity getRequests() {
 		try {
-			return "Requests: " + control.getRequests().toString();
-		}catch (IllegalArgumentException ex) {
-			return ex.getMessage();
+			return ResponseEntity.status(HttpStatus.OK).body("Requests: \n" + control.getRequests().toString());
+		}catch (IllegalAccessError ex) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
 		}
 	}
 }

@@ -6,8 +6,8 @@ import com.PaymentApplication.ServiceProvider.ProviderHandler;
 import java.util.Map;
 
 public class WeMobileHandler extends ProviderHandler {
-    public void execute(Map m){
+    public void handleTheRequest(Map m){
         //handle request!
-        super.execute(m);
+        super.handleTheRequest(m);
     }
 }

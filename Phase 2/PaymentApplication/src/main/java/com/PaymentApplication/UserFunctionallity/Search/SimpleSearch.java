@@ -8,8 +8,7 @@ import java.util.List;
 public class SimpleSearch implements ISearch {
     @Override
     public ArrayList<String> search(String text) {
-        if (!CurrentUser.checkUser())
-            throw new IllegalArgumentException("This function not allowed, you need to sign in first!");
+        CurrentUser.checkUser();
 
         //success
         List<String> name = ServiceList.getInstance().getServicesName();

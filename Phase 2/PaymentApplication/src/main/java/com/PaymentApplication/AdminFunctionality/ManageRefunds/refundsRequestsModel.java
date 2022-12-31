@@ -28,6 +28,8 @@ public class refundsRequestsModel{
     }
 
     public void Unsubscribe(int id) {
+        if (!requestsList.containsKey(id))
+            throw new IllegalArgumentException("No request with this id!");
         requestsList.remove(id);
         //remove requests from database
     }

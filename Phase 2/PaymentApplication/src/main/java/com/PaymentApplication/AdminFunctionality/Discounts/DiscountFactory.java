@@ -16,10 +16,10 @@ public class DiscountFactory {
     {
         String type = (String) m.get("type");
         if(type.toLowerCase().equals("specific"))
-            return new SpecificDiscount(Double.parseDouble((String) m.get("discount-percentage")));
+            return new SpecificDiscount(Double.parseDouble(m.get("discount-percentage").toString()));
         if(type.toLowerCase().equals("overall"))
-            return new OverallDiscount(Double.parseDouble((String) m.get("discount-percentage")),
-                    Integer.parseInt((String) m.get("transaction-number")));
+            return new OverallDiscount(Double.parseDouble(m.get("discount-percentage").toString()),
+                    Integer.parseInt(m.get("transaction-number").toString()));
         return null;
     }
 }

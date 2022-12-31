@@ -49,6 +49,6 @@ public class User {
                 "\nrequests=" + requests +
                 "\nwallet=" + wallet +
                 "\ntype=" + type +
-                "\n}";
+                "\n}\n";
     }
 }

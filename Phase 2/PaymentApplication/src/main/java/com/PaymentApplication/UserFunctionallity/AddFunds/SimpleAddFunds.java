@@ -12,8 +12,7 @@ public class SimpleAddFunds implements IFunds{
 	public Double addFundsToWallet(HashMap m)
 	{
 		//check
-		if (!CurrentUser.checkUser())
-			throw new IllegalAccessError("This function not allowed, you need to sign in first!");
+		CurrentUser.checkUser();
 
 		//pay
 		PaymentWay payment = PaymentFactory.createPaymentWay("credit-card");

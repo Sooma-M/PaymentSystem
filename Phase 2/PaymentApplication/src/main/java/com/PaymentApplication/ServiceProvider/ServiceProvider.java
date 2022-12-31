@@ -31,5 +31,4 @@ public abstract class ServiceProvider {
     public List<Discount> getDiscounts(){return discounts;}
 
     public void addDiscount(Discount discount){discounts.add(discount);}
-    public void updateAmount(double amount){parameters.put("amount", amount);}
 }
