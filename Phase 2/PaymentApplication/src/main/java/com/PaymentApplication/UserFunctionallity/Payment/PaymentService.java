@@ -36,6 +36,6 @@ public class PaymentService implements IPayment {
         CurrentService.getService().getHandler().saveTransaction(Double.parseDouble(m.get("amount").toString()));
         CurrentService.setService(null);
 
-        return "You are pay " + amount + "$ successfully";
+        return "You paid " + amount + "$ successfully";
     }
 }
