@@ -16,14 +16,14 @@ To access the admin functionality please use the following account when signing 
 ```
 {
     "email": "admin",
-    "password": "123”
+    "password": "123"
 }
  ```
 If you want to sign in as a regular user account you can use sign up to make a new account or use the following account:
 ```
 {
     "email": "user",
-    "password": "123”
+    "password": "123"
 }
 ```
 
